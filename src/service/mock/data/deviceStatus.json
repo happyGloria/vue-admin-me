@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "deviceId": "PDU-192.168.12.91",
+      "deviceIp": "192.168.12.91",
+      "deviceName": "192.168.12.91",
+      "deviceStatus": 1,
+      "deviceType": "PDU",
+      "faultLevel": -1,
+      "siteId": 951,
+      "statusInfo": "{\"powerStatus\":{\"name\":\"设备供电状态\",\"value\":\"未定义(-1)\"},\"avgVoltage\":{\"name\":\"平均电压\",\"value\":0},\"totalPowerC\":{\"name\":\"合计功耗\",\"value\":0},\"portTotal\":{\"name\":\"端口总数\",\"value\":10},\"breaker\":{\"name\":\"断路器\",\"value\":1},\"list\":[{\"colnum\":{\"id\":\"id\",\"powerC\":\"功耗\",\"voltage\":\"电压\",\"status\":\"状态\",\"breaker\":\"开关控制\",\"power\":\"功率\",\"electricity\":\"电流\"},\"name\":\"端口信息\",\"value\":[{\"id\":\"第1路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第2路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第3路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第4路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第5路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第6路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第7路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第8路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第9路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0},{\"id\":\"第10路\",\"powerC\":0,\"voltage\":0,\"status\":\"未定义(-1)\",\"breaker\":0,\"power\":0,\"electricity\":0}]}],\"totalFlow\":{\"name\":\"合计流量\",\"value\":0},\"avgPower\":{\"name\":\"平均功率\",\"value\":0}}",
+      "statusTime": 1525759143000
+    },
+    {
+      "deviceId": "PDU-192.168.22.33",
+      "deviceIp": "192.168.22.33",
+      "deviceName": "测试PDU",
+      "deviceStatus": 0,
+      "deviceType": "PDU",
+      "faultLevel": 2,
+      "siteId": 951,
+      "statusInfo": "",
+      "statusTime": 1525759146000
+    }
+  ],
+  "retCode": 1,
+  "total": 2
+}

@@ -1,0 +1,32 @@
+{
+  "129-wkuykyvlhfwtkiqyqstm-366": {
+    "id": "129-wkuykyvlhfwtkiqyqstm-366",
+    "name": "分组名称1",
+    "parentId": "",
+    "parentName": ""
+  },
+  "428-kgxrjou-311": {
+    "id": "428-kgxrjou-311",
+    "name": "分组名称2",
+    "parentId": "",
+    "parentName": ""
+  },
+  "198-zveuapsvaixmvuekjac-336": {
+    "id": "198-zveuapsvaixmvuekjac-336",
+    "name": "子分组1",
+    "parentId": "428-kgxrjou-311",
+    "parentName": "分组名称2"
+  },
+  "484-ldczbdcrsgpigsmwxam-221": {
+    "id": "484-ldczbdcrsgpigsmwxam-221",
+    "name": "子分组1",
+    "parentId": "129-wkuykyvlhfwtkiqyqstm-366",
+    "parentName": "分组名称1"
+  },
+  "273-trzektc-466": {
+    "id": "273-trzektc-466",
+    "name": "子分组2",
+    "parentId": "129-wkuykyvlhfwtkiqyqstm-366",
+    "parentName": "分组名称1"
+  }
+}
