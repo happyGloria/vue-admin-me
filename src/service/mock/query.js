@@ -2,42 +2,41 @@ import data from '../data/index.js'
 const db = data
 
 export default {
-  'fr': function(data) {
+  'fr': function (data) {
     data = data || {}
     return {
       retCode: 1,
       message: '成功',
-      /* data: data */
-      ...data
+      data: data
     }
   },
-  'fa': function(code) {
+  'fa': function (code) {
     return {
       retCode: code || 400,
       message: 'error'
     }
   },
-  'random': function() {
+  'random': function () {
     const length = arguments.length
     const max = (length).toString(16)
     const index = $.random16((max + '').length, 0, length - 1)
     return arguments[$.int('0x' + index)]
   },
-  'getFirst': function(modal) {
+  'getFirst': function (modal) {
     for (const key in db[modal]) {
       return db[modal][key]
     }
   },
-  'getModal': function(modal) {
+  'getModal': function (modal) {
     return db[modal]
   },
-  'getObj': function(modal, id) {
+  'getObj': function (modal, id) {
     return $.extend(true, {}, db[modal][id])
   },
-  'getModalTemplate': function(modal) {
+  'getModalTemplate': function (modal) {
     return $.extend({}, this.getFirst(modal))
   },
-  'getByAttr': function(modal, attrs, filter) {
+  'getByAttr': function (modal, attrs, filter) {
     const data = db[modal]
     c : for (const id in data) {
       const obj = data[id]
@@ -56,7 +55,7 @@ export default {
       return obj
     }
   },
-  'getAllByAttr': function(modal, attrs, filter) {
+  'getAllByAttr': function (modal, attrs, filter) {
     let data = $.extend(true, {}, db[modal]),
       list = []
     c : for (const id in data) {
@@ -77,10 +76,10 @@ export default {
     }
     return list
   },
-  'page': function(modal, args, attrs) {
+  'page': function (modal, args, attrs) {
     let data = $.extend(true, {}, db[modal]),
       list = [],
-      filter = function(obj) {
+      filter = function (obj) {
         if (args.search) {
           if (typeof args.searchType !== 'undefined') {
             if (obj.searchType !== args.searchType) {
@@ -107,7 +106,7 @@ export default {
               value = attrs[i][1]
             if ($.isArray(value)) {
               let flag = true
-              value.forEach(function(v) {
+              value.forEach(function (v) {
                 if (obj[key] === v) {
                   return flag = false
                 }
@@ -135,12 +134,12 @@ export default {
       items: list.slice(start, end)
     })
   },
-  'get': function(modal, id) {
+  'get': function (modal, id) {
     return this.fr({
       object: $.extend(true, {}, db[modal][id])
     })
   },
-  'save': function(modal, obj, flag) {
+  'save': function (modal, obj, flag) {
     let old = db[modal][obj.id]
     if (old) {
       $.extend(old, obj)
@@ -151,7 +150,7 @@ export default {
     db[modal][obj.id] = $.str2json($.json2str(old))
     return flag ? { id: obj.id } : this.fr({ id: old.id })
   },
-  'getGroupChildren': function(modal, args) {
+  'getGroupChildren': function (modal, args) {
     const d = this.getAllByAttr('groups', [])
     const arr = []
     for (let i = 0; i < d.length; i++) {
@@ -162,7 +161,7 @@ export default {
     return arr
   },
   // modal为数据文件名 可传数组或字符串  多个页面调用同一接口时可传数组
-  'del': function(modal, id) {
+  'del': function (modal, id) {
     if (modal instanceof Array) {
       for (let i = 0; i < modal.length; i++) {
         if (db[modal[i]][id]) {
@@ -174,14 +173,14 @@ export default {
     }
     return this.fr()
   },
-  'delByAttr': function(modal, attrs) {
+  'delByAttr': function (modal, attrs) {
     const list = this.getAllByAttr(modal, attrs)
-    list.forEach(function(obj) {
+    list.forEach(function (obj) {
       delete db[modal][obj.id]
     })
     return this.fr()
   },
-  'delByIds': function(modal, ids) {
+  'delByIds': function (modal, ids) {
     for (let i = 0; i < ids.length; i++) {
       delete db[modal][ids[i]]
     }

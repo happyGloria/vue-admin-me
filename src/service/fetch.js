@@ -7,10 +7,6 @@ import listApis from './api.js'
 import Mock from './mock/mock.js'
 
 Vue.prototype.$http = axios
-Vue.prototype.apiList = {
-  EXPORT_STAT: '/statistics/download.do',
-  UPLOAD_FILE: '/settings/uploadfile.do'
-}
 
 var Test = !1,
   Service = {},
