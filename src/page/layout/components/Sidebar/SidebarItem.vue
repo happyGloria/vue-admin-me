@@ -25,8 +25,8 @@
           <router-link v-else :to="item.path+'/'+child.path" :key="child.name">
             <el-menu-item :index="item.path+'/'+child.path">
               <!-- <svg-icon v-if="child.meta&&child.meta.icon" :icon-class="child.meta.icon"></svg-icon> -->
-              <span v-if="child.meta&&child.meta.icon"
-                :class="['icon', 'icon-'+child.meta.icon]"></span>
+              <span v-if="child.meta && child.meta.icon"
+                :class="['icon', 'icon-' + child.meta.icon]"></span>
               <span v-if="child.meta&&child.meta.title">{{generateTitle(child.meta.title)}}</span>
             </el-menu-item>
           </router-link>
@@ -65,4 +65,17 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.menu-wrapper {
+  .icon {
+      font-size: 18px;
+      vertical-align: middle;
+      display: inline-block;
+      padding: 0 5px;
+  }
+}
+
+</style>
+
 

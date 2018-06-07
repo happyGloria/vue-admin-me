@@ -18,7 +18,8 @@ module.exports = {
     '$': true,
     'Service': true,
     'console': true,
-    '_': true
+    '_': true,
+    '$util': true
   },
   // check if imports actually resolve
   'settings': {

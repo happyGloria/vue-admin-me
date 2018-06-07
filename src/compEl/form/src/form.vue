@@ -47,7 +47,8 @@
           callback(valid)
         }
         this.fields.forEach((field, index) => {
-          let trigger = excluded ? '' : ($(field.$el).is(':hidden') && 'hide' || '')
+          // let trigger = excluded ? '' : ($(field.$el).is(':hidden') && 'hide' || '')
+          let trigger = excluded ? '' : (field.$el.style.display == 'none' && 'hide' || '')
           field.validate(trigger, errors => {
             if (errors) {
               valid = false

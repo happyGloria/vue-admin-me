@@ -8,16 +8,23 @@ import '@/assets/iconfont/iconfont.css' // iconfonts
 import '@/styles/index.scss' // global css
 import '@/less/core.less' // global styles
 
-import App from './App.vue'
-import router from './router.js'
-import store from './store'
+window._ = require('lodash')
+import $util from '@/utils/index.js'
+window.$util = $util
+
+console.log()
 
 import '@/comp/index.js'
 import '@/compEl/index.js'
 
+import App from './App.vue'
+import router from './router.js'
+import store from './store'
+
 import i18n from './lang' // Internationalization
 
 import '@/service/fetch.js' // axios
+import './permission' // permission
 
 Vue.config.productionTip = false
 

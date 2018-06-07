@@ -1,3 +1,3 @@
 
-import Entry from './entry.js'
-export default Object.assign({}, Entry)
+import Login from './Login.js'
+export default Object.assign({}, Login)

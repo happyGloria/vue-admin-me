@@ -37,7 +37,6 @@
   import { FormItem } from 'element-ui'
   import AsyncValidator from 'async-validator'
   import { isIE9, tooltips } from '@/utils/hack'
-  /*  let isIE9 = $.isIE9() */
 
   function getPropByPath(obj, path) {
     let tempObj = obj
@@ -76,7 +75,7 @@
 
         if (rules && rules.length) {
           rules.every(rule => {
-            if ($.isFunction(rule.required)) {
+            if (_.isFunction(rule.required)) {
               isRequired = rule.required()
             } else {
               isRequired = rule.required
@@ -114,9 +113,9 @@
 
           let list = [prop.o[prop.k], prop2.o[prop2.k]]
 
-          $.each(list, (i, v) => {
-            if ($.isArray(v) || $.isPlainObject(v)) {
-              list[i] = $.json2str(v)
+          list.forEach((item, idx) => {
+            if (_.isArray(item) || _.isPlainObject(item)) {
+              list[idx] = JSON.stringify(item)
             }
           })
 
@@ -139,12 +138,12 @@
 
         return [].concat(selfRuels || formRules || [])
       },
-      validate(trigger, callback = $.noop) {
+      validate(trigger, callback = _.noop) {
         let me = this
         if (me.initing) {
           me.initing = !1
         } else {
-          $.timer('form-item-validate' + me._uid, () => {
+          $util.timer('form-item-validate' + me._uid, () => {
             me.validateDisabled = false
             let rules = me.getFilteredRule(trigger)
             if ((!rules || rules.length === 0)) {
@@ -183,7 +182,7 @@
         me.validateState = ''
         me.validateMessage = ''
 
-        initialValue = $.isUndefined(initialValue) ? ($.isUndefined(me.initialValue) ? '' : me.initialValue) : initialValue
+        initialValue = _.isUndefined(initialValue) ? (_.isUndefined(me.initialValue) ? '' : me.initialValue) : initialValue
 
         if (Array.isArray(value)) {
           prop.o[prop.k] = [].concat(initialValue)

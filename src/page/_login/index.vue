@@ -7,18 +7,18 @@
       </div>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user" />
+          <span class="icon icon-user"></span>
         </span>
         <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
       </el-form-item>
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password" />
+          <span class="icon icon-password"></span>
         </span>
         <el-input name="password" :type="passwordType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password" />
         <span class="show-pwd" @click="showPwd">
-          <svg-icon icon-class="eye" />
+          <span class="icon icon-eye"></span>
         </span>
       </el-form-item>
 
@@ -165,6 +165,10 @@ $light_gray:#eee;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: #454545;
+  }
+  .icon {
+    font-size: 20px;
+    color:#ccc;
   }
 }
 </style>

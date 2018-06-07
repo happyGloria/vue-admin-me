@@ -3,7 +3,9 @@ module.exports = function(prefix) {
   return [
     // 登录 登出
     ['login', '/user/login', 'post'], // 登录
-    ['logout', '/user/logout', 'post'] // 登出
+    ['logout', '/user/logout', 'post'], // 登出
+    ['loginByUsername', 'loginByUsername', 'post'],
+    ['getUserInfo', '/getUserInfo', 'post']
 
   ].map(function(v) {
     v[1] = prefix + v[1]

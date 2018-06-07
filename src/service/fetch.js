@@ -8,7 +8,7 @@ import Mock from './mock/mock.js'
 
 Vue.prototype.$http = axios
 
-var Test = !1,
+var Test = !0,
   Service = {},
   axiosObj = axios.create({
     timeout: 30000

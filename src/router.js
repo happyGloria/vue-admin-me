@@ -28,7 +28,7 @@ import Layout from '@/page/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: import('@/page/_login/index'), hidden: true },
+  { path: '/login', component: () => import('@/page/_login/index'), hidden: true },
   {
     path: '',
     component: Layout,
@@ -47,9 +47,9 @@ export const asyncRouterMap = [
     path: '/table',
     component: Layout,
     redirect: 'noredirect',
-    name: 'table',
+    name: 'Table',
     meta: {
-      title: 'table',
+      title: 'Table',
       icon: 'table'
     },
     children: [
@@ -57,18 +57,33 @@ export const asyncRouterMap = [
     ]
   },
   {
-    path: '/charts',
+    path: '/d3Charts',
     component: Layout,
     redirect: 'noredirect',
-    name: 'charts',
+    name: 'd3Charts',
     meta: {
-      title: 'charts',
+      title: 'd3Charts',
       icon: 'chart'
     },
     children: [
+      { path: 'line', component: () => import('@/page/_d3Charts/line'), name: 'lineChart', meta: { icon: 'lineChart', title: 'lineChart', noCache: true }},
+      { path: 'pie', component: () => import('@/page/_d3Charts/pie'), name: 'pieChart', meta: { icon: 'pieChart', title: 'pieChart', noCache: true }},
+      { path: 'mix', component: () => import('@/page/_d3Charts/mix'), name: 'mixChart', meta: { icon: 'mixChart', title: 'mixChart', noCache: true }}
       /*  { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: 'keyboardChart', noCache: true }},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: 'lineChart', noCache: true }},
       { path: 'mixchart', component: _import('charts/mixChart'), name: 'mixChart', meta: { title: 'mixChart', noCache: true }} */
+    ]
+  },
+  {
+    path: '/eCharts',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'eCharts',
+    meta: {
+      title: 'eCharts',
+      icon: 'chart'
+    },
+    children: [
+      { path: 'line', component: () => import('@/page/_eCharts/line'), name: 'eLineChart', meta: { title: 'lineChart', noCache: true }}
     ]
   }
 ]
