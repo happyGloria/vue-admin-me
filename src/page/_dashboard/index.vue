@@ -1,13 +1,5 @@
 <template>
   <div class="dashboard">
-    首尔
+    <span>dashboard</span>
   </div>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-      }
-    }
-  }
-</script>

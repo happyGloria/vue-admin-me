@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const _import = require('./_import_' + process.env.NODE_ENV)
+// const _import = require('./_import_' + process.env.NODE_ENV)
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
 
@@ -28,14 +28,14 @@ import Layout from '@/page/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: _import('_login/index'), hidden: true },
+  { path: '/login', component: import('@/page/_login/index'), hidden: true },
   {
     path: '',
     component: Layout,
     redirect: 'dashboard',
     children: [{
       path: 'dashboard',
-      component: _import('_dashboard/index'),
+      component: () => import('@/page/_dashboard/index'),
       name: 'dashboard',
       meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
     }]
@@ -76,5 +76,5 @@ export const asyncRouterMap = [
 export default new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap.concat(asyncRouterMap)
+  routes: constantRouterMap
 })

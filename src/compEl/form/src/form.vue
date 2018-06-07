@@ -5,20 +5,20 @@
     name: 'ElForm',
     componentName: 'ElForm',
     extends: Form,
-    data () {
+    data() {
       return {
         fields: []
       }
     },
     watch: {
-      model (v1, v2) {
+      model(v1, v2) {
         $.for(this.fields, (field) => {
           field.initing = !field.eq(v1, v2)
         })
       }
     },
     methods: {
-      resetField (name, value) {
+      resetField(name, value) {
         if (name) {
           this.fields.forEach(field => {
             if (field.prop === name) {
@@ -28,7 +28,7 @@
           })
         }
       },
-      resetFields (data) {
+      resetFields(data) {
         if (!this.model) {
           process.env.NODE_ENV !== 'production' &&
           console.warn('[Element Warn][Form]model is required for resetFields to work.')
@@ -38,7 +38,7 @@
           field.resetField(data && data[field.prop])
         })
       },
-      validate (callback, excluded) {
+      validate(callback, excluded) {
         let valid = true
         let count = 0
         let length = this.fields.length

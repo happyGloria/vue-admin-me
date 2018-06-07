@@ -1,11 +1,11 @@
 import ElFormItem from '../form/src/form-item'
 
 /* istanbul ignore next */
-ElFormItem.install = function (Vue) {
+ElFormItem.install = function(Vue) {
   Vue.component(ElFormItem.name, ElFormItem)
   Vue.mixin({
     methods: {
-      msg (result) {
+      msg(result) {
         let text = result
         let fnName = this.$notify.warning
         if ($.isPlainObject(result)) {
@@ -22,7 +22,7 @@ ElFormItem.install = function (Vue) {
           duration: 5000
         })
       },
-      confirm (text, success, fail) {
+      confirm(text, success, fail) {
         this.$confirm(text, '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

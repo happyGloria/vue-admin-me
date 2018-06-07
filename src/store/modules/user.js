@@ -94,7 +94,7 @@ const user = {
     // 登出
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
-        logout(state.token).then(() => {
+        Service.logout(state.token).then(() => {
           commit('SET_TOKEN', '')
           commit('SET_ROLES', [])
           removeToken()
@@ -119,7 +119,7 @@ const user = {
       return new Promise(resolve => {
         commit('SET_TOKEN', role)
         setToken(role)
-        getUserInfo(role).then(response => {
+        Service.getUserInfo(role).then(response => {
           const data = response.data
           commit('SET_ROLES', data.roles)
           commit('SET_NAME', data.name)

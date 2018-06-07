@@ -49,7 +49,7 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
-import LangSelect from '@/components/LangSelect'
+import LangSelect from '@/comp/LangSelect'
 import SocialSign from './socialsignin'
 
 export default {

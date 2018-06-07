@@ -36,10 +36,10 @@
 <script>
   import { FormItem } from 'element-ui'
   import AsyncValidator from 'async-validator'
+  import { isIE9, tooltips } from '@/utils/hack'
+  /*  let isIE9 = $.isIE9() */
 
-  let isIE9 = $.isIE9()
-
-  function getPropByPath (obj, path) {
+  function getPropByPath(obj, path) {
     let tempObj = obj
     path = path.replace(/\[(\w+)\]/g, '.$1')
     path = path.replace(/^\./, '')
@@ -70,7 +70,7 @@
       errorType: String
     },
     computed: {
-      isRequired () {
+      isRequired() {
         let rules = this.getRules()
         let isRequired = false
 
@@ -89,12 +89,13 @@
         }
         return isRequired
       },
-      errContainer () {
+      errContainer() {
         return this.form.errContainer || this.errorType
       }
     },
     methods: {
-      attr (model) {
+      hackIE9: tooltips,
+      attr(model) {
         if (!model || !this.prop) {
           return
         }
@@ -106,7 +107,7 @@
 
         return getPropByPath(model, path)
       },
-      eq (v1, v2) {
+      eq(v1, v2) {
         try {
           let prop = this.attr(v1)
           let prop2 = this.attr(v2)
@@ -124,13 +125,13 @@
           return !1
         }
       },
-      setFieldValue (v) {
+      setFieldValue(v) {
         let prop = this.attr(this.form.model)
         if (prop) {
           prop.o[prop.k] = v
         }
       },
-      getRules () {
+      getRules() {
         var formRules = this.form.rules
         var selfRuels = this.rules
 
@@ -138,7 +139,7 @@
 
         return [].concat(selfRuels || formRules || [])
       },
-      validate (trigger, callback = $.noop) {
+      validate(trigger, callback = $.noop) {
         let me = this
         if (me.initing) {
           me.initing = !1
@@ -161,7 +162,7 @@
               let model = {}
 
               model[me.prop] = me.fieldValue
-              validator.validate(model, {firstFields: true}, (errors, fields) => {
+              validator.validate(model, { firstFields: true }, (errors, fields) => {
                 me.validateState = !errors ? 'success' : 'error'
                 me.validateMessage = errors ? errors[0].message : ''
 
@@ -174,7 +175,7 @@
           }, isIE9 ? 400 : 200)
         }
       },
-      resetField (initialValue) {
+      resetField(initialValue) {
         let me = this
         let value = me.fieldValue
         let prop = me.attr(me.form.model)
@@ -192,19 +193,18 @@
 
         me.validateDisabled = true
       },
-      onFieldChange (value) {
+      onFieldChange(value) {
         if (this.validateDisabled) {
           this.validateDisabled = false
 
-          //解决提交表单后显示的错误提示,在输入后不会触发验证的问题
+          // 解决提交表单后显示的错误提示,在输入后不会触发验证的问题
           if (!value) {
             return
           }
         }
 
         this.validate('change')
-      },
-      hackIE9: $.hack.tooltips
+      }
     }
   }
 </script>

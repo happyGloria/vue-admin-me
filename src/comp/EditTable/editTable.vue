@@ -109,6 +109,7 @@
 </template>
 
 <script>
+  import { tooltips } from '@/utils/hack'
   let cache = {}
   export default {
     name: 'editTable',
@@ -149,7 +150,7 @@
       setting: Object
     },
     methods: {
-      hackIE9: $.hack.tooltips,
+      hackIE9: tooltips,
       getList() {
         return this.list
       },

@@ -3,19 +3,21 @@
 /* jshint esversion: 6 */
 import Vue from 'vue'
 
-import i18n from './lang' // Internationalization
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/iconfont/iconfont.css' // iconfonts
+import '@/styles/index.scss' // global css
 import '@/less/core.less' // global styles
 
-import App from './App'
-import router from './router'
+import App from './App.vue'
+import router from './router.js'
 import store from './store'
-
-import '@/service/fetch.js' // axios
 
 import '@/comp/index.js'
 import '@/compEl/index.js'
+
+import i18n from './lang' // Internationalization
+
+import '@/service/fetch.js' // axios
 
 Vue.config.productionTip = false
 
@@ -25,6 +27,6 @@ new Vue({
   router,
   store,
   i18n,
-  components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  components: { App }
 })

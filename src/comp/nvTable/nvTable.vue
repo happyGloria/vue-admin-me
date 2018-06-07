@@ -127,10 +127,11 @@ export default {
   methods: {
     resizeFn() {
       var $contaner = this.$el
-      var $toolBar = this.$el.children[0],
-        $foot = this.$el.children[2]
+      var $toolBar = this.$el.children[0]
+      /*   $foot = this.$el.children[2] */
       function getFootHeigt() {
-        var h =  $($foot).is(':hidden') ? 40 : $foot.clientHeight
+        // var h = ($foot.css('display') === 'none') ? 40 : $foot.clientHeight
+        /* $($foot).is(':hidden') */
         return 42
       }
       this.tBodyHeight = $contaner.clientHeight - $toolBar.clientHeight - getFootHeigt()
