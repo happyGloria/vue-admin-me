@@ -1,0 +1,52 @@
+// https://github.com/justnorris/Blankwork-Flexible-SASS-Grid-System
+
+// 960网格布局
+$_columns: 12 !default; // 总列数
+$_columns-width: 60px !default; //单列宽
+$_gutter: 20px !default;  //间隔
+
+@function get_width($columns: $_columns, $onlyInnerWidth: true, $_substract: 0) {
+  // 默认返回值
+  $return: ($_column-width + $_gutter) * $columns - $_substract !default;
+  @if $onlyInnerWidth == true {
+    // 如果$onlyInnerWidth 为 true, 那么减掉一个间隔 $_gutter
+    $return: ($_column-width + $_gutter) * $columns - $_gutter - $_substract;
+  }
+  @return $return;
+}
+
+//  调用
+#container {
+  width: get_width(12, false); // 960px
+}
+
+.col-four {
+  @extend %clearfix;
+  .col {
+    @include float;
+    margin: 0 $gutter/2;
+    width: get_width(3); // 220px
+
+    h2 {
+      padding-left: 10px;
+      width: get_width(3, true, 10px); //210px
+    }
+  }
+}
+
+// 第一种 默认的如get_width(3)得到220px;
+// 第二种 不需要左右margin的如 get_width(3，false) 得到240px;
+// 第三种 可以灵活缩小点宽度如 get_width(3, true, 10px) 得到210px;
+
+
+@mixin error($boderWidth: 2px) {
+  border: $boderWidth solid #f00;
+  color: #f00;
+}
+//调用error
+.generic-error{
+  @include error();
+}
+.generic-error2{
+  @include error(3px);
+}

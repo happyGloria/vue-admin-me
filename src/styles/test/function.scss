@@ -1,0 +1,10 @@
+// px转em
+@function pxToEm($px, $base:16) {
+  @return ($px / $base) * 1em;
+}
+
+// 调用
+/*
+p {
+  font-size: pxToEm(20);
+} */

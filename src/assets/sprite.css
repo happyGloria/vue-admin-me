@@ -1,2 +1,5 @@
 .ico { display: inline-block; background: url(/src/assets/sprite.png) no-repeat -1000% -1000%;  }
-.ico-empty-info { width: 120px; height: 120px; background-position: 0px 0px; }
+.ico-content-frame1 { width: 652px; height: 298px; background-position: 0px 0px; }
+.ico-empty-info { width: 120px; height: 120px; background-position: -356px -298px; }
+.ico-ring-inner { width: 170px; height: 170px; background-position: -186px -298px; }
+.ico-ring-outer { width: 186px; height: 186px; background-position: 0px -298px; }

@@ -1,0 +1,17 @@
+// 定义animation的keyframes
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@keyframes clockwise {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes anti-clockwise {
+  0% {
+    transform: rotate(360deg);
+  }
+}

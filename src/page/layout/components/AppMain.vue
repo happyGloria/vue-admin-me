@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main" style="min-height: 100%">
+  <section class="app-main">
     <transition name="fade" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view></router-view>
@@ -21,3 +21,9 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.app-main {
+  height: calc(100% - 84px)
+}
+</style>
+

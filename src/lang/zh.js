@@ -1,11 +1,13 @@
 export default {
   route: {
     dashboard: '首页',
+    components: '组件',
+    componentMixin: '小组件',
+
     introduction: '简述',
     documentation: '文档',
     permission: '权限测试页',
     icons: '图标',
-    components: '组件',
     componentIndex: '介绍',
     tinymce: '富文本编辑器',
     markdown: 'Markdown',
@@ -16,8 +18,8 @@ export default {
     dropzone: 'Dropzone',
     sticky: 'Sticky',
     countTo: 'CountTo',
-    componentMixin: '小组件',
     backToTop: '返回顶部',
+
     d3Charts: 'D3图表',
     eCharts: 'eCharts图表',
     keyboardChart: '键盘图表',
@@ -25,8 +27,13 @@ export default {
     eLineChart: '折线图',
     pieChart: '饼状图',
     mixChart: '混合图表',
-    example: '综合实例',
+
     Table: '表格',
+
+    style: '样式',
+    css: '样式',
+
+    example: '综合实例',
     dynamicTable: '动态Table',
     dragTable: '拖拽Table',
     inlineEditTable: 'Table内编辑',

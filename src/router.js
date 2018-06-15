@@ -44,6 +44,20 @@ export const constantRouterMap = [
 
 export const asyncRouterMap = [
   {
+    path: '/component',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'components',
+    meta: {
+      title: 'components',
+      icon: 'component'
+    },
+    children: [
+      { path: 'mix1', component: () => import('@/page/_component/mix'), name: 'mix', meta: { icon: 'book', title: 'mix', noCache: true }},
+      { path: 'mix2', component: () => import('@/page/_component/tab'), name: 'tab', meta: { icon: 'book', title: 'tab', noCache: true }}
+    ]
+  },
+  {
     path: '/table',
     component: Layout,
     redirect: 'noredirect',
@@ -84,6 +98,20 @@ export const asyncRouterMap = [
     },
     children: [
       { path: 'line', component: () => import('@/page/_eCharts/line'), name: 'eLineChart', meta: { title: 'lineChart', noCache: true }}
+    ]
+  },
+  {
+    path: '/style',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'style',
+    meta: {
+      title: 'css',
+      icon: 'css'
+    },
+    children: [
+      { path: 'css', component: () => import('@/page/_style/css'), name: 'css', meta: { icon: 'css', title: 'css', noCache: true }}
+      /* { path: 'less', component: () => import('@/page/_style/less'), name: 'less', meta: { icon: 'less', title: 'less', noCache: true }} */
     ]
   }
 ]

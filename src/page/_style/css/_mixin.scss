@@ -1,0 +1,83 @@
+@mixin center-block {
+  margin: auto;
+}
+
+
+$lte7: true !default; //是否兼容IE6，7
+
+@mixin inline-block {
+  display: inline-block;
+  @if $lte7 {
+    *display: inline;
+    *zoom: 1;
+  }
+}
+
+@mixin float($float: left) {
+  float: $float;
+  @if $lte7 {
+    display: line;
+  }
+}
+
+// 禁用样式
+@mixin disabled($bgColor: #e6e6e6, $textColor: #ababab) {
+  background-color: $bgColor !important;
+  color: $textColor !important;
+  cursor: not-allowed !important;
+}
+
+@mixin boxShadow($boxShadow) {
+  -webkit-box-shadow: $boxShadow;
+  -moz-box-shadow: $boxShadow;
+  box-shadow: $boxShadow;
+}
+
+
+$lte7: true;
+
+%clearfix {
+  @if $lte7 {
+    *zoom: 1;
+  }
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    font: 0/0 a;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+
+// ie6,7 zoom组合申明
+%zoom {
+  @if $lte7 {
+    *zoom: 1;
+  }
+}
+
+// 通过先定义@mixin,然后在%调用@mixin来实现传递变量
+@mixin float($float: left) {
+  float: $float;
+  @if $lte7 {
+    display: inline;
+  }
+}
+
+%float-right {
+  @include float(right);
+}
+
+// px转em
+@function pxToEm($px, $base:16) {
+  @return ($px / $base) * 1em;
+}
+
+
+
+

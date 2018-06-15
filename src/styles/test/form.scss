@@ -1,0 +1,13 @@
+// 变量依次为: 字体大小，边框颜色， focus时边框颜色， 圆角大小
+$simpleForm: 12px $gray #52a8ec $baseRadius !default;
+
+%simple-form-basic {
+  border: 1px solid nth($simpleForm, 2);
+  padding: 4px;
+  @if not(unitless(nth($simpleForm, 4))) {
+    border-radius: nth($simpleForm, 4);
+  }
+  &:focus {
+    outline: 0 none;
+  }
+}
