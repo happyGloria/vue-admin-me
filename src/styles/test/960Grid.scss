@@ -26,7 +26,6 @@ $_gutter: 20px !default;  //间隔
     @include float;
     margin: 0 $gutter/2;
     width: get_width(3); // 220px
-
     h2 {
       padding-left: 10px;
       width: get_width(3, true, 10px); //210px

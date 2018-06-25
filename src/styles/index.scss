@@ -1,10 +1,23 @@
-@import './variables.scss';
-@import './mixin.scss';
-@import './transition.scss';
+/* VENDOR - Default fall-backs and external files.
+================================================================== */
+
+
+/* BASE - Base Variable file along with starting point Mixins and PalaceHolders.
+================================================================== */
+@import './utils/_variables.scss';
+@import './utils/_mixins.scss';
+@import './utils/_animate.scss';
+@import './utils/_transition.scss';
+
+/* FRAMEWORK - Structure and layout files.
+================================================================== */
+@import './layout.scss';
 @import './element-ui.scss';
+
+/* Moduels Re-userable site elements
+================================================================== */
 @import './sidebar.scss';
 @import './btn.scss';
-@import './layout.scss';
 
 body {
   height: 100%;

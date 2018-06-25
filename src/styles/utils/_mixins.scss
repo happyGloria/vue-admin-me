@@ -14,6 +14,12 @@ $lte7: true !default; //是否兼容IE6，7
   align-items: center;
 }
 
+@mixin center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @mixin float($float: left) {
   float: $float;
   @if $lte7 {
@@ -21,26 +27,17 @@ $lte7: true !default; //是否兼容IE6，7
   }
 }
 
-/* @mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-} */
-
 @mixin clearfix {
   *zoom:1;
   &:before, &:after {
     content: "";
-    display:table;
+    display: table;
   }
-
   &:after {
     clear:both;
+    overflow: hidden;
   }
 }
-
 @mixin scrollBar {
   &::-webkit-scrollbar-track-piece {
     background: #d3dce6;
@@ -120,7 +117,6 @@ $lte7: true !default; //是否兼容IE6，7
     border-bottom: $size dashed transparent;
   }
 }
-
 
 // 禁用样式
 @mixin disabled($bgColor: #e6e6e6, $textColor: #ababab) {

@@ -31,8 +31,6 @@ $prefix-for-spec: true !default; // 标准版
   }
 }
 
-
-
 @mixin box-shadow($shadow...) {
   @include prefixer(box-shadow, $shadow, webkit spec);
 }
@@ -44,6 +42,11 @@ $prefix-for-spec: true !default; // 标准版
 
 @mixin transform($property...) {
   @include prefixer(transform, $property, webkit moz o spec);
+}
+
+@mixin skewX($degrees) {
+  @include prefixer(transform, skewX($degrees), webkit moz o ms spec);
+  -webkit-backface-visibility: hidden;
 }
 
 // 调用

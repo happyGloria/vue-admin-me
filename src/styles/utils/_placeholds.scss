@@ -1,0 +1,73 @@
+/**
+ * placeholds特点： 像mixins一样，也可以多次使用，而且不会生成重复的代码。使得输入的CSS更友好，更干净。
+ * 和Mixins配合在一起使用，既可保持Mixins灵活性，而且还可以保持代码的简洁与干净。
+ */
+
+%bg-image {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.image1 {
+  @extend %bg-image;
+  background-image:url();
+}
+
+.image2 {
+  @extend %bg-image;
+  background-image:url();
+}
+
+/*
+多个选择器运用了相同的 %placeholder 也只会输出一次代码。没有引用的%placeholder是不会输出任何CSS代码。
+
+编译出来的 css
+.image-one, .image-two {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.image-one {
+  background-image:url(/img/image-one.jpg") ;
+}
+.image-two {
+  background-image:url(/img/image-two.jpg") ;
+}
+*/
+
+%btn {
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  shadow: none;
+  font-size: 14px;
+  width: 150px;
+  margin: 5px 0;
+  text-align: center;
+  display: block;
+}
+
+@mixin btn-background($btn-background) {
+  @extend %btn;
+  background-color: $btn-background;
+  &:hover{
+    background-color: ligten($btn-background, 10%);
+  }
+}
+
+/* BUTTONS */
+.cta-btn {
+  @include btn-background(green);
+}
+
+.main-btn {
+  @include btn-background(orange);
+}
+
+.info-btn {
+  @include btn-background(blue);
+}
