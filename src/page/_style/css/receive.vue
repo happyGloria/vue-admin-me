@@ -1,17 +1,13 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true" width="100" height="100" @click="clickFn">
-    <!--  <use :xlink:href="iconName"></use> -->
-    <object :data="svgUrl" width="100" height="100"
-            type="image/svg+xml"
-            codebase="http://www.adobe.com/svg/viewer/install/" />
+  <svg width="120px" height="120px">
+    <g id="rJlzdWC1WX_H1lTZRyZm" data-animator-group="true" data-animator-type="1"><path d="M163,326c-20.7,0-40.9-3.9-60-11.5c-5.6-2.3-8.4-8.7-6.1-14.3c2.3-5.6,8.6-8.4,14.3-6.1&#10;&#9;c16.5,6.6,33.9,9.9,51.8,9.9c77.2,0,140-62.8,140-140S240.2,24,163,24S23,86.8,23,164c0,34.6,12.7,67.8,35.8,93.5&#10;&#9;c4.1,4.5,3.7,11.5-0.8,15.5c-4.5,4.1-11.5,3.7-15.5-0.8C15.7,242.5,1,204,1,164C1,74.7,73.7,2,163,2s162,72.7,162,162&#10;&#9;S252.3,326,163,326z" id="rJlzdWC1WX"/></g>
+    <g id="SJ-Md-0k-Q_H1mdfR1Zm" data-animator-group="true" data-animator-type="2"><path d="M142.4,225.1c-3.2,0-6.4-1.2-8.8-3.7l-56.4-56.4c-4.9-4.9-4.9-12.8,0-17.7c4.9-4.9,12.8-4.9,17.7,0l47.5,47.5&#10;&#9;l98.8-98.8c4.9-4.9,12.8-4.9,17.7,0c4.9,4.9,4.9,12.8,0,17.7L151.2,221.5C148.8,223.9,145.6,225.1,142.4,225.1z" id="SJ-Md-0k-Q"/></g>
   </svg>
 </template>
 <script>
-  import svgUrl from '@/assets/svg/receive.svg'
   export default {
     data() {
       return {
-        svgUrl: svgUrl
       }
     },
     methods: {
