@@ -52,14 +52,13 @@
   </div>
 </template>
 <script>
+  /* https://juejin.im/post/5b1e2b50f265da6e5546c15d */
   export default {
     data() {
       return {
       }
     },
     methods: {
-    },
-    mounted() {
     }
   }
 </script>
@@ -160,7 +159,6 @@
     background: linear-gradient(180deg, rgba(0, 180, 220, .3),rgba(0,180,220,0.1), rgba(0,180,220,0.1), rgba(0,180,220,0.3));
     box-shadow: 0 0 2em rgba(0, 180, 220, .1) inset;
   }
-
   .pannel-2 {
     .pannel-head {
       height: 40px;
@@ -205,7 +203,6 @@
     border-image: linear-gradient(45deg, red, blue) 10%;
     border-radius: 10px; /* 实现不了boder-radius, 可以使用双层div, 外层background: linear-gradient() 内层设置背景 */
   }
-  /* https://juejin.im/post/5b1e2b50f265da6e5546c15d */
 }
 </style>
 

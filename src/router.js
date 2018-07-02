@@ -97,7 +97,8 @@ export const asyncRouterMap = [
       icon: 'chart'
     },
     children: [
-      { path: 'line', component: () => import('@/page/_eCharts/line'), name: 'eLineChart', meta: { title: 'lineChart', noCache: true }}
+      { path: 'line', component: () => import('@/page/_eCharts/line'), name: 'eLineChart', meta: { title: 'lineChart', noCache: true }},
+      { path: 'pie', component: () => import('@/page/_eCharts/pie'), name: 'ePieChart', meta: { title: 'pieChart', noCache: true }}
     ]
   },
   {
