@@ -80,11 +80,8 @@ export const asyncRouterMap = [
       icon: 'chart'
     },
     children: [
-      { path: 'line', component: () => import('@/page/_d3Charts/line'), name: 'lineChart', meta: { icon: 'lineChart', title: 'lineChart', noCache: true }},
-      { path: 'pie', component: () => import('@/page/_d3Charts/pie'), name: 'pieChart', meta: { icon: 'pieChart', title: 'pieChart', noCache: true }},
+      { path: 'chart', component: () => import('@/page/_d3Charts/chart'), name: 'lineChart', meta: { icon: 'lineChart', title: 'lineChart', noCache: true }},
       { path: 'mix', component: () => import('@/page/_d3Charts/mix'), name: 'mixChart', meta: { icon: 'mixChart', title: 'mixChart', noCache: true }}
-      /*  { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: 'keyboardChart', noCache: true }},
-      { path: 'mixchart', component: _import('charts/mixChart'), name: 'mixChart', meta: { title: 'mixChart', noCache: true }} */
     ]
   },
   {

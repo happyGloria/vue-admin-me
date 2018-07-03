@@ -3,9 +3,9 @@
     <el-row type="flex" justify="space-around">
       <el-col :span="12">
           <div class="grid-content">
-            <line-chart
+            <area-chart
               width="100%" height="100%"
-              :settings = "chartSetting"></line-chart>
+              :settings = "chartSetting"></area-chart>
           </div>
           <div class="grid-content">
             <mix-chart
@@ -14,19 +14,45 @@
           </div>
       </el-col>
       <el-col :span="11">
-        <div class="grid-content"></div>
+        <div class="grid-content">
+          <line-chart
+              width="100%" height="100%"
+              :settings = "mixChartSetting"
+              :chart-data = "lineChartData"></line-chart>
+        </div>
         <div class="grid-content"></div>
       </el-col>
     </el-row>
   </div>
 </template>
 <script>
-import lineChart from '@/comp/Charts/line.vue'
+import areaChart from '@/comp/Charts/areaLineChart.vue'
 import mixChart from '@/comp/Charts/mixChart.vue'
+import lineChart from './lineChart.vue'
+const lineChartData = {
+  newVisitis: {
+    expectedData: [100, 120, 161, 134, 105, 160, 165],
+    actualData: [120, 82, 91, 154, 162, 140, 145]
+  },
+  messages: {
+    expectedData: [200, 192, 120, 144, 160, 130, 140],
+    actualData: [180, 160, 151, 106, 145, 150, 130]
+  },
+  purchases: {
+    expectedData: [80, 100, 121, 104, 105, 90, 100],
+    actualData: [120, 90, 100, 138, 142, 130, 130]
+  },
+  shoppings: {
+    expectedData: [130, 140, 141, 142, 145, 150, 160],
+    actualData: [120, 82, 91, 154, 162, 140, 130]
+  }
+}
+
 export default {
   components: {
-    lineChart,
-    mixChart
+    areaChart,
+    mixChart,
+    lineChart
   },
   data() {
     var me = this
@@ -211,8 +237,11 @@ export default {
             data: [1036, 3693, 2962, 3810, 2519, 1915, 1748, 4675, 6209, 4323, 2865, 4298]
           }
         ]
-      }
+      },
+      lineChartData: lineChartData.newVisitis
     }
+  },
+  methods: {
   }
 }
 </script>
