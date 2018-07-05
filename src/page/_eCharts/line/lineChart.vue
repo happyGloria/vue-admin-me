@@ -2,7 +2,7 @@
   <div :class="className" :style="{width: width, height: height}"></div>
 </template>
 <script>
-require('echarts/theme/macarons')  // echarts theme
+require('echarts/theme/macarons')
 import { debounce } from '@/utils'
 
 export default {
