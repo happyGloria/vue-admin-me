@@ -9,7 +9,6 @@ export default {
     }
   }
 }
-
 export function debounce(func, wait, immediate) {
   let timeout, args, context, timestamp, result
 
@@ -29,7 +28,6 @@ export function debounce(func, wait, immediate) {
       }
     }
   }
-
   return function(...args) {
     context = this
     timestamp = +new Date()
@@ -44,3 +42,4 @@ export function debounce(func, wait, immediate) {
     return result
   }
 }
+

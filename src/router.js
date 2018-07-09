@@ -54,7 +54,7 @@ export const asyncRouterMap = [
     },
     children: [
       { path: 'mix1', component: () => import('@/page/_component/mix'), name: 'mix', meta: { icon: 'book', title: 'mix', noCache: true }},
-      { path: 'mix2', component: () => import('@/page/_component/tab'), name: 'tab', meta: { icon: 'book', title: 'tab', noCache: true }}
+      { path: 'cube', component: () => import('@/page/_component/cube'), name: 'cube', meta: { icon: 'book', title: 'cube', noCache: true }}
     ]
   },
   {
