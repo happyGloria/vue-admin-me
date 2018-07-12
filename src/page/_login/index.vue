@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <canvas id="canvasEffects" ref="canvasEffects"></canvas>
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
       <div class="title-container">
         <h3 class="title">{{$t('login.title')}}</h3>
@@ -129,6 +130,11 @@ export default {
   },
   created() {
     // window.addEventListener('hashchange', this.afterQRScan)
+  },
+  mounted() {
+    /* var canvasEl = this.$refs.canvasEffects
+    var w = guiCanvas.width = window.innerWidth,
+      h = guiCanvas.height = window.innerHeight */
   },
   destroyed() {
     // window.removeEventListener('hashchange', this.afterQRScan)

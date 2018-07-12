@@ -1,6 +1,9 @@
 .ico { display: inline-block; background: url(/src/assets/sprite.png) no-repeat -1000% -1000%;  }
 .ico-border { width: 1258px; height: 1256px; background-position: 0px 0px; }
 .ico-border1 { width: 851px; height: 247px; background-position: -1258px 0px; }
+.ico-btn-slide-acitve { width: 26px; height: 20px; background-position: -1910px -433px; }
+.ico-btn-slide-inActive { width: 26px; height: 20px; background-position: -1936px -433px; }
+.ico-btn-slide { width: 24px; height: 16px; background-position: -1962px -433px; }
 .ico-content-frame { width: 652px; height: 298px; background-position: -1258px -247px; }
 .ico-empty-info { width: 120px; height: 120px; background-position: -1428px -545px; }
 .ico-ring-inner { width: 170px; height: 170px; background-position: -1258px -545px; }

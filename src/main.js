@@ -5,6 +5,7 @@ import Vue from 'vue'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/iconfont/iconfont.css' // iconfonts
+import '@/assets/sprite.css'
 import '@/styles/index.scss' // global css
 import '@/less/core.less' // global styles
 

@@ -108,8 +108,27 @@ export const asyncRouterMap = [
       icon: 'css'
     },
     children: [
-      { path: 'css', component: () => import('@/page/_style/css'), name: 'css', meta: { icon: 'css', title: 'css', noCache: true }}
-      /* { path: 'less', component: () => import('@/page/_style/less'), name: 'less', meta: { icon: 'less', title: 'less', noCache: true }} */
+      { path: 'css', component: () => import('@/page/_style/css'), name: 'css', meta: { icon: 'css', title: 'css', noCache: true }},
+      {
+        path: '3d',
+        component: () => import('@/page/_style/3d'),
+        name: '3d',
+        meta: {
+          icon: 'css',
+          title: '3d',
+          noCache: true
+        }
+      },
+      {
+        path: 'svg',
+        component: () => import('@/page/_style/svg'),
+        name: 'svg',
+        meta: {
+          icon: 'css',
+          title: 'svg',
+          noCache: true
+        }
+      }
     ]
   }
 ]

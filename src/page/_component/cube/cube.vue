@@ -1,13 +1,7 @@
 <template>
   <div class="cube-wrapper">
     <div class="btn-slide">
-       <el-switch
-          v-model="rotate"
-          active-color="#13ce66"
-          active-text="正面"
-          inactive-text="背面"
-          inactive-color="#ff4949">
-        </el-switch>
+        <nv-switch v-model="rotate" inactive-value = "背面" active-value = "正面"></nv-switch>
     </div>
     <div class="cube" :class="{ rotate: rotate }">
       <div class="cube-face face-front">
@@ -22,24 +16,25 @@
 </template>
 
 <script>
+import nvSwitch from './nvSwitch.vue'
 export default {
+  components: {
+    nvSwitch
+  },
   data() {
     return {
-      rotate: false
+      rotate: true
     }
-  },
-  components: {
-
   }
 }
 </script>
 
 <style scoped lang="scss">
   .cube-wrapper {
-    width: 134px;
+    width: 159px;
     .cube {
       position: relative;
-      height: 500px;
+      height: 600px;
       .cube-face{
         position: absolute;
         left: 0;
@@ -50,7 +45,7 @@ export default {
       }
       .face-side {
         background: url('~@assets/bg/cube-side.png') no-repeat;
-        transform: rotateY(-90deg) translateX(-60px);
+        transform: rotateY(90deg) translateX(-80px);
         transform-origin: left;
       }
       .face-front {
@@ -58,7 +53,7 @@ export default {
         transform-origin: right;
       }
       .face-back {
-        transform: rotateY(180deg) translateX(134px) translateZ(60px);
+        transform: rotateY(180deg) translateX(159px) translateZ(80px);
         transform-origin: right;
       }
     }

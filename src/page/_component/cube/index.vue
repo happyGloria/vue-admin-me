@@ -28,9 +28,14 @@ export default {
 <style scoped lang="scss">
 .page-comp-2 {
   position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(~@assets/bg/bg2.png) no-repeat;
+  background-size: cover;
   .cube-item {
     position: absolute;
     left: 200px;
+    top: 20px;
   }
 }
 </style>
