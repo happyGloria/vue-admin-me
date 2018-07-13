@@ -16,11 +16,7 @@
 </template>
 
 <script>
-import nvSwitch from './nvSwitch.vue'
 export default {
-  components: {
-    nvSwitch
-  },
   data() {
     return {
       rotate: true

@@ -1,6 +1,8 @@
 <template>
   <div class="login-container">
-    <canvas id="canvasEffects" ref="canvasEffects"></canvas>
+    <div id="c0"></div>
+    <div class="layout1"></div>
+    
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
       <div class="title-container">
         <h3 class="title">{{$t('login.title')}}</h3>
@@ -37,6 +39,12 @@
       <el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>
     </el-form>
 
+    
+    <!-- 星空背景 -->
+    <!-- <canvas id="canvas-starry" ref="canvasStarry" v-if="starryBg"></canvas> -->
+    <!-- three.js背景特效 -->
+    <!--  <div id="canvas-container" ref='canvasContainer' v-else-if="!starryBg"></div> -->
+
     <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
       {{$t('login.thirdpartyTips')}}
       <br/>
@@ -44,7 +52,6 @@
       <br/>
       <social-sign />
     </el-dialog>
-
   </div>
 </template>
 
@@ -52,6 +59,9 @@
 import { isvalidUsername } from '@/utils/validate'
 import LangSelect from '@/comp/LangSelect'
 import SocialSign from './socialsignin'
+import canvasAnimation from './starrySky/canvas.js'
+/* import ThreeAnimation from './ThreeBg/index.js' */
+import ThreeAnimation from './ThreeEffects/index.js'
 
 export default {
   components: { LangSelect, SocialSign },
@@ -82,7 +92,9 @@ export default {
       },
       passwordType: 'password',
       loading: false,
-      showDialog: false
+      showDialog: false,
+      starryBg: false,
+      waveBg: null
     }
   },
   methods: {
@@ -126,25 +138,71 @@ export default {
       //     this.$router.push({ path: '/' })
       //   })
       // }
+    },
+    initStarryBg() {
+      // 激活画布
+      canvasAnimation.initCanvas('#canvas-starry').run()
+      window.onresize = function() {
+        canvasAnimation.initCanvas('#canvas-starry').run()
+      }
+    },
+    initThreeBg() {
+      this.waveBg = ThreeAnimation.init('#c0')
+      document.querySelector('.layout1').addEventListener('mousemove', this.waveBg.move)
+      window.onresize = () => {
+        if (!this.waveBg) return false
+        this.waveBg.resize(window.innerWidth, window.innerHeight)
+      }
+      // ThreeAnimation.init('#canvas-container')
+    },
+    initBg() {
+      /* if (Math.random() > 0.5) {
+        this.starryBg = true
+        this.initStarryBg()
+      } else {
+        this.starryBg = false
+      } */
+      this.initThreeBg()
     }
   },
   created() {
     // window.addEventListener('hashchange', this.afterQRScan)
   },
   mounted() {
-    /* var canvasEl = this.$refs.canvasEffects
-    var w = guiCanvas.width = window.innerWidth,
-      h = guiCanvas.height = window.innerHeight */
+    this.initBg()
   },
   destroyed() {
     // window.removeEventListener('hashchange', this.afterQRScan)
+  },
+  beforeDestroy() {
+    canvasAnimation.stop()
+    window.onresize = null
+    if (this.waveBG) this.waveBG.disable()
+    this.waveBG = null
   }
 }
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
+
 $bg:#2d3a4b;
 $light_gray:#eee;
+
+#c0, .layout1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.layout1 {
+  z-index: 1;
+  opacity: .7;
+  background-size: cover;
+}
+
 
 /* reset element-ui css */
 .login-container {
@@ -180,9 +238,14 @@ $light_gray:#eee;
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
+$bg: #2d3a4b;
+$dark_gray: #889aa4;
+$light_gray: #eee;
+
+#canvas-container { 
+  position: absolute;
+  top: 0;
+}
 
 .login-container {
   position: fixed;

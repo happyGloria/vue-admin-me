@@ -20,7 +20,8 @@ module.exports = {
     'console': true,
     '_': true,
     '$util': true,
-    'dat': true
+    'dat': true,
+    'THREE': true
   },
   // check if imports actually resolve
   'settings': {

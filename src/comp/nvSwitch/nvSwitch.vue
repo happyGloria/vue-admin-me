@@ -9,6 +9,7 @@
 <script>
 
 export default {
+  name: 'nv-switch',
   props: {
     value: {
       type: Boolean,

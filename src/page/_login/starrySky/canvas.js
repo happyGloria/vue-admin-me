@@ -37,7 +37,7 @@ var Star = function() {
   this.orbitY = h / 2
   this.timePassed = random(0, maxStars)
   this.speed = random(this.orbitRadius) / 800000
-  //   this.speed = random(this.orbitRadius) / 500000;
+  // this.speed = random(this.orbitRadius) / 500000;
   // 星星移动速度
   this.alpha = random(2, 10) / 10
   if (count < 1300) {
@@ -75,12 +75,11 @@ function init() {
 }
 
 module.exports = {
-  initCanvas: function(el) {
-    var canvas = document.getElementById('canvas')
-
-    ctx = canvas.getContext('2d')
-    w = canvas.width = window.innerWidth
-    h = canvas.height = window.innerHeight // 星星数量
+  initCanvas: function(id) {
+    var canEl = document.querySelector(id)
+    ctx = canEl.getContext('2d')
+    w = canEl.width = window.innerWidth
+    h = canEl.height = window.innerHeight // 星星数量
 
     canvas2 = document.createElement('canvas')
     var ctx2 = canvas2.getContext('2d')
