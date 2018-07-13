@@ -68,7 +68,7 @@ function WaveBackground(container) {
       }
     }
 
-    renderer.render(scene, camera)
+    renderer.render(scene, camera) // 只有调用了该函数，渲染器才会开始工作，我们才能在页面上看到物体
     count += 0.1
   }
   function resize(w, h) {
