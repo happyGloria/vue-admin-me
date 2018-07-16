@@ -1,7 +1,6 @@
 <template>
   <div class="login-container">
-    <div id="c0"></div>
-    <div class="layout1"></div>
+    <div id="canvas-bg"></div>
     
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
       <div class="title-container">
@@ -42,16 +41,14 @@
     
     <!-- 星空背景 -->
     <!-- <canvas id="canvas-starry" ref="canvasStarry" v-if="starryBg"></canvas> -->
-    <!-- three.js背景特效 -->
-    <!--  <div id="canvas-container" ref='canvasContainer' v-else-if="!starryBg"></div> -->
 
-    <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
+    <!-- <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
       {{$t('login.thirdpartyTips')}}
       <br/>
       <br/>
       <br/>
       <social-sign />
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -59,9 +56,9 @@
 import { isvalidUsername } from '@/utils/validate'
 import LangSelect from '@/comp/LangSelect'
 import SocialSign from './socialsignin'
-import canvasAnimation from './starrySky/canvas.js'
-/* import ThreeAnimation from './ThreeBg/index.js' */
-import ThreeAnimation from './ThreeEffects/index.js'
+import animation from './EffectBg/starrySky.js'
+import ThreeAnimation from './EffectBg/index_wave.js'
+import rainbow from './EffectBg/rainbow.js'
 
 export default {
   components: { LangSelect, SocialSign },
@@ -94,7 +91,8 @@ export default {
       loading: false,
       showDialog: false,
       starryBg: false,
-      waveBg: null
+      waveBg: null,
+      animation: null
     }
   },
   methods: {
@@ -121,64 +119,30 @@ export default {
         }
       })
     },
-    afterQRScan() {
-      // const hash = window.location.hash.slice(1)
-      // const hashObj = getQueryObject(hash)
-      // const originUrl = window.location.origin
-      // history.replaceState({}, '', originUrl)
-      // const codeMap = {
-      //   wechat: 'code',
-      //   tencent: 'code'
-      // }
-      // const codeName = hashObj[codeMap[this.auth_type]]
-      // if (!codeName) {
-      //   alert('第三方登录失败')
-      // } else {
-      //   this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-      //     this.$router.push({ path: '/' })
-      //   })
-      // }
-    },
-    initStarryBg() {
-      // 激活画布
-      canvasAnimation.initCanvas('#canvas-starry').run()
-      window.onresize = function() {
-        canvasAnimation.initCanvas('#canvas-starry').run()
-      }
-    },
-    initThreeBg() {
-      this.waveBg = ThreeAnimation.init('#c0')
-      document.querySelector('.layout1').addEventListener('mousemove', this.waveBg.move)
-      window.onresize = () => {
-        if (!this.waveBg) return false
-        this.waveBg.resize(window.innerWidth, window.innerHeight)
-      }
-      // ThreeAnimation.init('#canvas-container')
-    },
     initBg() {
-      /* if (Math.random() > 0.5) {
-        this.starryBg = true
-        this.initStarryBg()
-      } else {
-        this.starryBg = false
-      } */
-      this.initThreeBg()
+      this.waveBg = ThreeAnimation.init('#canvas-bg')
+    },
+    initBg2() {
+      // 激活画布
+      this.animation = animation.init('#canvas-bg')
+    },
+    initBg3() {
+      rainbow.init('#canvas-bg')
     }
-  },
-  created() {
-    // window.addEventListener('hashchange', this.afterQRScan)
   },
   mounted() {
     this.initBg()
   },
-  destroyed() {
-    // window.removeEventListener('hashchange', this.afterQRScan)
-  },
   beforeDestroy() {
-    canvasAnimation.stop()
-    window.onresize = null
-    if (this.waveBG) this.waveBG.disable()
-    this.waveBG = null
+    window.removeEventListener('resize')
+    if (this.waveBg) this.waveBg.disable()
+    this.waveBg = null
+
+    /* 星空背景 */
+    if (this.animation) {
+      this.animation.stop()
+      this.animation = null
+    }
   }
 }
 </script>
@@ -186,9 +150,10 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 
 $bg:#2d3a4b;
+$dark_gray: #889aa4;
 $light_gray:#eee;
 
-#c0, .layout1 {
+#canvas-bg {
   position: absolute;
   left: 0;
   right: 0;
@@ -196,13 +161,6 @@ $light_gray:#eee;
   bottom: 0;
   z-index: 0;
 }
-
-.layout1 {
-  z-index: 1;
-  opacity: .7;
-  background-size: cover;
-}
-
 
 /* reset element-ui css */
 .login-container {
@@ -234,17 +192,6 @@ $light_gray:#eee;
     font-size: 20px;
     color:#ccc;
   }
-}
-</style>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-$bg: #2d3a4b;
-$dark_gray: #889aa4;
-$light_gray: #eee;
-
-#canvas-container { 
-  position: absolute;
-  top: 0;
 }
 
 .login-container {

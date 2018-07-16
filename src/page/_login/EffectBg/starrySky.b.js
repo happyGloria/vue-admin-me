@@ -75,8 +75,10 @@ function init() {
 }
 
 module.exports = {
-  initCanvas: function(id) {
-    var canEl = document.querySelector(id)
+  init: function(id) {
+    var wrapper = document.querySelector(id)
+    var canEl = document.createElement('canvas')
+    wrapper.append(canEl)
     ctx = canEl.getContext('2d')
     w = canEl.width = window.innerWidth
     h = canEl.height = window.innerHeight // 星星数量
@@ -91,10 +93,6 @@ module.exports = {
     gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)')
     gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)')
     gradient2.addColorStop(1, 'transparent')
-
-    // gradient2.addColorStop(0.025, 'transparent');
-    // gradient2.addColorStop(0.1, 'transparent');
-    // gradient2.addColorStop(0.25, 'transparent');
 
     ctx2.fillStyle = gradient2
     ctx2.beginPath()

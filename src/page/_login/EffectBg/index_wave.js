@@ -8,14 +8,15 @@ function createPoints(scene) {
     program: function(context) {
       context.beginPath()
       var radial = context.createRadialGradient(0, 0, 0, 0, 0, 0.4)
-      radial.addColorStop(0, 'rgba(171, 246, 255, 1)')
-      radial.addColorStop(0.6, 'rgba(134, 211, 222, 0.6)')
-      radial.addColorStop(1, 'rgba(134, 211, 222, 0.0)')
+      radial.addColorStop(0, 'rgba(171,246,255,1)')
+      radial.addColorStop(0.6, 'rgba(134,211,222,0.6)')
+      radial.addColorStop(1, 'rgba(134,211,222,0.0)')
       context.fillStyle = radial
       context.arc(0, 0, 0.4, 0, PI2, true)
       context.fill()
     }
   })
+
   function createPoint(x, y) {
     var point = new THREE.Sprite(material)
     point.position.x = x * SEPARATION - MaxX
@@ -31,20 +32,23 @@ function createPoints(scene) {
 
 function WaveBackground(container) {
   var enabled = true
-  var _w = container.offsetWidth, _h = container.offsetHeight
-  var windowHalfX = _w / 2, windowHalfY = _h / 2
-  var mouseX = 0, mouseY = 0, count = 0
+  var _w = container.offsetWidth,
+    _h = container.offsetHeight
+  var windowHalfX = _w / 2,
+    windowHalfY = _h / 2
+  var mouseX = 0,
+    mouseY = 0,
+    count = 0
 
-  var camera = new THREE.PerspectiveCamera(75, _w / _h, 1, 10000) // 正投影相机
-  camera.position.z = 1000
-  var scene = new THREE.Scene() // 创建场景
+  var camera = new THREE.PerspectiveCamera(75, _w / _h, 1, 10000) // 1. 创建相机
+  camera.position.z = 1000 // 将相机向后（屏幕外）移
+  var scene = new THREE.Scene() // 2. 创建场景， 所有的3d Object data 都包含在此
   var points = createPoints(scene)
-
-  var renderer = new THREE.CanvasRenderer() // 渲染器
-  // renderer.setClearColorHex(0xffffff, 0.0);  // 刷新画布的颜色
+  // 3. 创建render  加入CanvasRenderer，由渲染器决定场景中的物体看起来如何，并将其画出 (CanvasRenderer创建了它自己的DOM元素，这是一个普通的2D canvas对象)
+  var renderer = new THREE.CanvasRenderer()
   renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setSize(_w, _h) // 设置渲染器渲染的范围
-  container.appendChild(renderer.domElement)
+  renderer.setSize(_w, _h)
+  container.appendChild(renderer.domElement) // 4. 将渲染器的canvas domElement加入到body中, 这样我们才能在浏览器中看到它
 
   function renderPoint(x, y) {
     var point = points[x * AMOUNTX + y]
@@ -56,7 +60,6 @@ function WaveBackground(container) {
   function animate() {
     if (!enabled) return
     requestAnimationFrame(animate)
-    // console.log("animate : ", ts, (new Date()).getTime());
 
     camera.position.x += (mouseX - camera.position.x) / 20
     camera.position.y += (-mouseY - camera.position.y) / 20
@@ -68,9 +71,10 @@ function WaveBackground(container) {
       }
     }
 
-    renderer.render(scene, camera) // 只有调用了该函数，渲染器才会开始工作，我们才能在页面上看到物体
+    renderer.render(scene, camera)
     count += 0.1
   }
+
   function resize(w, h) {
     windowHalfX = w / 2
     windowHalfY = h / 2
@@ -80,12 +84,7 @@ function WaveBackground(container) {
   }
 
   animate()
-
   return {
-    // enable : function(){
-    // 	enabled = true;
-    // 	animate();
-    // },
     disable: function() { enabled = false },
     resize: resize,
     move: function(evt) {
@@ -97,6 +96,13 @@ function WaveBackground(container) {
 
 module.exports = {
   init(id) {
-    return new WaveBackground(document.querySelector(id))
+    var waveBg = new WaveBackground(document.querySelector(id))
+
+    document.addEventListener('mousemove', waveBg.move)
+    window.addEventListener('resize', () => {
+      if (!waveBg) return false
+      waveBg.resize(window.innerWidth, window.innerHeight)
+    })
+    return waveBg
   }
 }
