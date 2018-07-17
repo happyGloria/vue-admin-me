@@ -99,6 +99,5 @@ module.exports = {
     init(document.querySelector(id))
   },
   stop() {
-    window.requestAnimationFrame
   }
 }

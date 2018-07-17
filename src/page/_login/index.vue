@@ -135,8 +135,10 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize')
-    if (this.waveBg) this.waveBg.disable()
-    this.waveBg = null
+    if (this.waveBg) {
+      this.waveBg.disable()
+      this.waveBg = null
+    }
 
     /* 星空背景 */
     if (this.animation) {

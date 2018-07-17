@@ -1,6 +1,7 @@
 var SEPARATION = 50, AMOUNTX = 70, AMOUNTY = 70
 var MaxX = AMOUNTX * SEPARATION * 0.5, MaxY = AMOUNTY * SEPARATION * 0.5
 var PI2 = Math.PI * 2
+var animationFrameTimer = null
 
 function createPoints(scene) {
   var points = []
@@ -58,8 +59,11 @@ function WaveBackground(container) {
   }
 
   function animate() {
-    if (!enabled) return
-    requestAnimationFrame(animate)
+    if (!enabled) {
+      window.cancelAnimationFrame(animationFrameTimer)
+      return
+    }
+    animationFrameTimer = requestAnimationFrame(animate)
 
     camera.position.x += (mouseX - camera.position.x) / 20
     camera.position.y += (-mouseY - camera.position.y) / 20

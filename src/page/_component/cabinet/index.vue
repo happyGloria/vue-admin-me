@@ -2,7 +2,7 @@
   <div class="page-comp-2">
     <el-row type="flex" justify="space-around">
       <el-col :span="11">
-        <cube class="cube-item"></cube>
+        <cab class="cube-item"></cab>
       </el-col>
       <el-col :span="12">
       </el-col>
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import cube from './cube.vue'
+import cab from './cab.vue'
 export default {
   components: {
-    cube
+    cab
   },
   data() {
     return {

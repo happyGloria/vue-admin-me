@@ -11,9 +11,9 @@ import '@/less/core.less' // global styles
 
 window._ = require('lodash')
 import $util from '@/utils/index.js'
+import TWEEN from 'static/lib/tweenjs-16.3.4.js'
 window.$util = $util
-
-console.log()
+window.TWEEN = TWEEN
 
 import '@/comp/index.js'
 import '@/compEl/index.js'
