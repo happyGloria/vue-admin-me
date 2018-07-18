@@ -21,7 +21,8 @@ module.exports = {
     '_': true,
     '$util': true,
     'dat': true,
-    'THREE': true
+    'THREE': true,
+    'TWEEN': true
   },
   // check if imports actually resolve
   'settings': {

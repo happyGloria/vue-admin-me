@@ -1,14 +1,13 @@
 <template>
   <div class="cube-wrapper">
-    <svg class="svg-cub">
+    <svg class="svg-cub" :viewBox="viewBox">
       <defs>
-        <linearGradient  x1="0%" y1="0%" x2="0%" y2="100%" 
-          v-for="(item, idx) in cubeData" :id="`colorCube${idx}`">
-          <stop offset="0%" :style="{ stopColor: item.color, stopOpatity: 0}"></stop>
-          <stop offset="100%" :style="{ stopColor: item.color, stopOpatity: 0.6}"></stop>
-        </linearGradient>
+        <linearGradient :id="`colorCube${index}`" x1="0%" y1="0%" x2="0%" y2="100%" v-for="(item, index) of cubeData">
+					<stop offset="0%" :style="{ stopColor: item.color, stopOpacity: 0 }" />
+					<stop offset="100%" :style="{ stopColor: item.color, stopOpacity: 0.6 }" />
+				</linearGradient>
       </defs>
-      <g class="cube" v-for="(item, idx) of cubeData" :transform="translates[idx]">
+      <g class="cube" v-for="(item, idx) of cubeData" :transform="translates[idx]" :key="idx">
         <face 
           :color="getColorFn(item, idx)"
           :value="item.value"
@@ -64,19 +63,19 @@ export default {
           stroke: item.color
         },
         ab: {
-          fill: `url(colorCube${idx})`,
+          fill: `url(#colorCube${idx})`,
           stroke: item.color
         },
         cd: {
-          fill: `url(colorCube${idx})`,
+          fill: `url(#colorCube${idx})`,
           stroke: item.color
         },
         ef: {
-          fill: `url(colorCube${idx})`,
+          fill: `url(#colorCube${idx})`,
           stoke: 'none'
         },
         gh: {
-          fill: `url(colorCube${idx})`,
+          fill: `url(#colorCube${idx})`,
           stoke: 'none'
         },
         bottom: {

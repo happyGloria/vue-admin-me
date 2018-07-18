@@ -3,7 +3,10 @@
     <el-row type="flex" justify="space-around">
       <el-col :span="8">
         <div class="grid-content">
-          <cube :cubeData="cubeData" :translates="translates"></cube>
+          <cube 
+            :cubeData="cubeData" 
+            :translates="translates"
+            :viewBox="cubeViewBox"></cube>
         </div>
         <div class="grid-content"></div>
       </el-col>
@@ -29,7 +32,7 @@
         cubeData: [
           { value: 7, color: '#da8d1b', title: '正常' },
           { value: 3, color: '#39d2a1', title: '故障' },
-          { value: 3, color: '#da8d1b', title: '正常' },
+          { value: 5, color: '#da8d1b', title: '正常' },
           { value: 7, color: '#39d2a1', title: '故障' }
         ],
         translates: [
@@ -37,7 +40,8 @@
           'translate(70, 0)',
           'translate(170, 0)',
           'translate(230, 0)'
-        ]
+        ],
+        cubeViewBox: '0, 0, 310, 265'
       }
     }
   }

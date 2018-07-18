@@ -1,11 +1,11 @@
 <template>
   <g class="faces">
-    <polygon class="top" :points="points.top" :fill="color.top.fill" fill-opacity="0.05" :stroke="color.top.stroke"></polygon>
-    <polygon class="ab" :points="points.ab" :fill="color.ab.fill" :stroke="color.ab.stroke"></polygon>
-		<polygon class="cd" :points="points.cd" :fill="color.cd.fill" :stroke="color.cd.stroke"></polygon>
-		<polygon class="ef" :points="points.ef" :fill="color.ef.fill" :stroke="color.ef.stroke"></polygon>
-		<polygon class="gh" :points="points.gh" :fill="color.gh.fill" :stroke="color.gh.stroke"></polygon>
-		<polygon class="bottom" :points="basePoint" :fill="color.bottom.fill" fill-opacity="0.5" :stroke="color.bottom.stroke"></polygon>
+    <polygon class="top" :points="points.top" :fill="color.top.fill" fill-opacity="0.05" :stroke="color.top.stroke" stroke-width="0.7"></polygon>
+		<polygon class="ab" :points="points.ab" :fill="color.ab.fill" :stroke="color.ab.stroke" stroke-width="0.7"></polygon>
+		<polygon class="cd" :points="points.cd" :fill="color.cd.fill" :stroke="color.cd.stroke" stroke-width="0.7"></polygon>
+		<polygon class="ef" :points="points.ef" :fill="color.ef.fill" :stroke="color.ef.stroke" stroke-width="0.7"></polygon>
+		<polygon class="gh" :points="points.gh" :fill="color.gh.fill" :stroke="color.gh.stroke" stroke-width="0.7"></polygon>
+		<polygon class="bottom" points="20,215 35,205 52,215 37,225" :fill="color.bottom.fill" fill-opacity="0.5" :stroke="color.bottom.stroke" stroke-width="0.7"></polygon>
   </g>
 </template>
 
@@ -54,29 +54,32 @@ export default {
       }
     }
   },
+  methods: {
+    update(value) {
+      var me = this
+      function animate(time) {
+        requestAnimationFrame(animate)
+        window.TWEEN.update(time)
+      }
+
+      new window.TWEEN.Tween({ tween: me.y })
+        .easing(window.TWEEN.Easing.Linear.None)
+        .onUpdate(function() {
+          me.y = this.tween
+        })
+        .to({ tween: value }, 1000)
+        .start()
+
+      animate()
+    }
+  },
   watch: {
     py(newVal, oldVal) {
       this.update(newVal * 140)
     }
   },
-  methods: {
-    update(value) {
-      function animate(item) {
-        requestAnimationFrame(animate)
-      }
-      animate()
-    }
-  },
   mounted() {
-    console.log(this.color.top)
+    this.update(this.py * 140)
   }
 }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-.faces {
-  polygon {
-    stroke-width: 0.7;
-  }
-}
-</style>
