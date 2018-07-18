@@ -2,7 +2,7 @@
   <div class="cube-wrapper">
     <svg class="svg-cub" :viewBox="viewBox">
       <defs>
-        <linearGradient :id="`colorCube${index}`" x1="0%" y1="0%" x2="0%" y2="100%" v-for="(item, index) of cubeData">
+        <linearGradient :id="`colorCube${index}`" x1="0%" y1="0%" x2="0%" y2="100%" v-for="(item, index) of cubeData" :key="index">
 					<stop offset="0%" :style="{ stopColor: item.color, stopOpacity: 0 }" />
 					<stop offset="100%" :style="{ stopColor: item.color, stopOpacity: 0.6 }" />
 				</linearGradient>

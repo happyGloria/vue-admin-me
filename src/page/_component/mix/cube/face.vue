@@ -57,13 +57,13 @@ export default {
   methods: {
     update(value) {
       var me = this
-      function animate(time) {
+      function animate() {
         requestAnimationFrame(animate)
-        window.TWEEN.update(time)
+        TWEEN.update()
       }
 
-      new window.TWEEN.Tween({ tween: me.y })
-        .easing(window.TWEEN.Easing.Linear.None)
+      new TWEEN.Tween({ tween: me.y })
+        .easing(TWEEN.Easing.Linear.None)
         .onUpdate(function() {
           me.y = this.tween
         })
