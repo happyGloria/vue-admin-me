@@ -8,9 +8,6 @@
 <script>
 import url from '@/assets/img/bird.jpg'
 export default {
-  components: {
-
-  },
   data() {
     return {
       url: url

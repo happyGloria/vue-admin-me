@@ -30,10 +30,10 @@
     data() {
       return {
         cubeData: [
-          { value: 7, color: '#da8d1b', title: '正常' },
-          { value: 3, color: '#39d2a1', title: '故障' },
-          { value: 5, color: '#da8d1b', title: '正常' },
-          { value: 7, color: '#39d2a1', title: '故障' }
+          { value: 7, color: '#52bedb', title: '正常节点' },
+          { value: 3, color: '#39d2a1', title: '故障节点' },
+          { value: 5, color: '#52bedb', title: '正常节点' },
+          { value: 7, color: '#39d2a1', title: '故障节点' }
         ],
         translates: [
           'translate(10, 0)',

@@ -10,7 +10,9 @@
       <g class="cube" v-for="(item, idx) of cubeData" :transform="translates[idx]" :key="idx">
         <face 
           :color="getColorFn(item, idx)"
+          :title="item.title"
           :value="item.value"
+          :text-color="item.color"
           :py="getY[idx]">
         </face>
       </g>

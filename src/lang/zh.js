@@ -34,6 +34,8 @@ export default {
     css: '样式',
 
     example: '综合实例',
+    shopcar: '购物车',
+
     dynamicTable: '动态Table',
     dragTable: '拖拽Table',
     inlineEditTable: 'Table内编辑',

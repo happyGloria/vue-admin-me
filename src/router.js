@@ -108,7 +108,16 @@ export const asyncRouterMap = [
       icon: 'css'
     },
     children: [
-      { path: 'css', component: () => import('@/page/_style/css'), name: 'css', meta: { icon: 'css', title: 'css', noCache: true }},
+      {
+        path: 'css',
+        component: () => import('@/page/_style/css'),
+        name: 'css',
+        meta: {
+          icon: 'css',
+          title: 'css',
+          noCache: true
+        }
+      },
       {
         path: '3d',
         component: () => import('@/page/_style/3d'),
@@ -130,6 +139,26 @@ export const asyncRouterMap = [
         }
       }
     ]
+  },
+  {
+    path: '/example',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'example',
+    meta: {
+      title: 'example',
+      icon: 'css'
+    },
+    children: [{
+      path: 'shopcar',
+      component: () => import('@/page/_example/shopcar'),
+      name: 'shopcar',
+      meta: {
+        icon: 'css',
+        title: 'shopcar',
+        noCache: true
+      }
+    }]
   }
 ]
 
