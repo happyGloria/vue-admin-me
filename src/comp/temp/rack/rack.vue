@@ -1,55 +1,72 @@
 <template>
-	<div class="rack-cab">
-		<div class="rack-title" @mouseover="titleHover=true" @mouseleave="titleHover=false">
-			<checkbox :id="`rack-checkbox-id${rackId}`" class="rack-checkbox"
-				Key="rack-check"
-				:isSelected="selected" @check="checkFn" v-show="showEditPage && !editingTitle"></checkbox>
-			<input :id="`rack-edit-title-id${rackId}`" class="rack-edit-title" type="text" v-model="inputTitle" v-show="showEditPage && editingTitle" @keyup.enter="titleEdit(true)" @blur="titleEdit(true)">
-			<a class="rack-titleName" v-show="!showEditPage || !editingTitle">{{cabInfo.name}}</a>
-			<div class="edit-content" v-show="showEditPage && !editingTitle && titleHover" @click="clickEdit" @mouseover="editHover=true" @mouseleave="editHover=false">
-				<span :class="{
+  <div class="rack-cab">
+    <div class="rack-title"
+         @mouseover="titleHover=true"
+         @mouseleave="titleHover=false">
+      <checkbox :id="`rack-checkbox-id${rackId}`"
+                class="rack-checkbox"
+                Key="rack-check"
+                :isSelected="selected"
+                @check="checkFn"
+                v-show="showEditPage && !editingTitle"></checkbox>
+      <input :id="`rack-edit-title-id${rackId}`"
+             class="rack-edit-title"
+             type="text"
+             v-model="inputTitle"
+             v-show="showEditPage && editingTitle"
+             @keyup.enter="titleEdit(true)"
+             @blur="titleEdit(true)">
+      <a class="rack-titleName"
+         v-show="!showEditPage || !editingTitle">{{cabInfo.name}}</a>
+      <div class="edit-content"
+           v-show="showEditPage && !editingTitle && titleHover"
+           @click="clickEdit"
+           @mouseover="editHover=true"
+           @mouseleave="editHover=false">
+        <span :class="{
 					'icon-rack-edit': !editHover,
 					'icon-rack-edit-hover': editHover
 				}"></span>
-				<span :class="{
+        <span :class="{
 					'edit-title': !editHover,
 					'edit-title-hover': editHover
 				}">编辑</span>
-			</div>
-		</div>
-		<div class="rack-slide" @click="clickSlide">
-			<div class="icon-rack-slide" :style="{'left': `${(slideFront? 38: 3)}px`, 'background-color':`${(slideFront? '#11b7f5': '#05d2ac')}`}"></div>
-			<div class="rack-slide-title" :style="{'left': `${(slideFront? 5: 32)}px`, 'color':`${(!slideFront? '#05d2ac': '#00c7fe')}`}">{{slideTitle}}</div>
-		</div>
-		<div class="rack-body">
-			<div class="rack-side rack-side-front">
-				<rack-element
-					:class="`rack-element${index}`"
-					v-for="(item, index) of cabElements"
-					:key="index"
-					@click="clickAddNew(item)"
-					:editPage="showEditPage"
-					:front="true"
-					:itemObj="item"
-					@onEditOneElement="onEditOneElement"
-					@onShowElementDetail="onShowElementDetail"></rack-element>
-			</div>
-			<div class="rack-side rack-side-back">
-				<rack-element :class="`rack-element${index}`"
-					v-for="(item, index) of cabElements"
-					:key="item.id"
-					@click="clickAddNew(item)"
-					:editPage="showEditPage"
-					:front="false"
-					:itemObj="item"
-					@onEditOneElement="onEditOneElement"
-					@onShowElementDetail="onShowElementDetail"
-				></rack-element>
-			</div>
-			<div class="rack-side rack-side-left"></div>
-			<!--div id="rack-side-right" class="rack-side"></div-->
-		</div>
-	</div>
+      </div>
+    </div>
+    <div class="rack-slide"
+         @click="clickSlide">
+      <div class="icon-rack-slide"
+           :style="{'left': `${(slideFront? 38: 3)}px`, 'background-color':`${(slideFront? '#11b7f5': '#05d2ac')}`}"></div>
+      <div class="rack-slide-title"
+           :style="{'left': `${(slideFront? 5: 32)}px`, 'color':`${(!slideFront? '#05d2ac': '#00c7fe')}`}">{{slideTitle}}</div>
+    </div>
+    <div class="rack-body">
+      <div class="rack-side rack-side-front">
+        <rack-element :class="`rack-element${index}`"
+                      v-for="(item, index) of cabElements"
+                      :key="index"
+                      @click="clickAddNew(item)"
+                      :editPage="showEditPage"
+                      :front="true"
+                      :itemObj="item"
+                      @onEditOneElement="onEditOneElement"
+                      @onShowElementDetail="onShowElementDetail"></rack-element>
+      </div>
+      <div class="rack-side rack-side-back">
+        <rack-element :class="`rack-element${index}`"
+                      v-for="(item, index) of cabElements"
+                      :key="item.id"
+                      @click="clickAddNew(item)"
+                      :editPage="showEditPage"
+                      :front="false"
+                      :itemObj="item"
+                      @onEditOneElement="onEditOneElement"
+                      @onShowElementDetail="onShowElementDetail"></rack-element>
+      </div>
+      <div class="rack-side rack-side-left"></div>
+      <!--div id="rack-side-right" class="rack-side"></div-->
+    </div>
+  </div>
 </template>
 <script>
 import Checkbox from '../checkbox.vue'
@@ -67,12 +84,12 @@ export default {
     showEditPage: Boolean,
     cabInfo: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     }
   },
-  data() {
+  data () {
     return {
       inputEl: null,
       inputTitle: this.cabInfo.name,
@@ -85,17 +102,17 @@ export default {
     }
   },
   computed: {
-    rackId() {
+    rackId () {
       return this.cabInfo.id
     },
-    slideTitle() {
+    slideTitle () {
       if (this.slideFront) {
         return '正面'
       } else {
         return '背面'
       }
     },
-    cabElements() {
+    cabElements () {
       this.aryElements = []
       if (!_.isUndefined(this.cabInfo.devices)) {
         // 添加初始值
@@ -115,15 +132,15 @@ export default {
     }
   },
   methods: {
-    tabChange() {
+    tabChange () {
       this.editingTitle = false
     },
-    checkFn(key, value) {
+    checkFn (key, value) {
       if (key == 'rack-check') {
         this.$emit('checkFn', this.rackId, value)
       }
     },
-    clickEdit() {
+    clickEdit () {
       if (this.showEditPage) {
         this.editingTitle = true
         this.$nextTick(() => {
@@ -131,12 +148,12 @@ export default {
         })
       }
     },
-    clickSlide() {
+    clickSlide () {
       this.slideFront = !this.slideFront
       this.$el.getElementsByClassName('rack-body')[0].classList.toggle('rack-rotate')
       // this.$el.getElementsByClassName("rack-slide-title")[0].classList.toggle('fadeIn');
     },
-    titleEdit(bEdited) {
+    titleEdit (bEdited) {
       this.editingTitle = false
       if (bEdited && this.cabInfo.name != this.inputTitle) {
         // 修改title
@@ -145,10 +162,10 @@ export default {
       }
       this.cabInfo.isNew = false
     },
-    onEditOneElement(type, element) {
+    onEditOneElement (type, element) {
       this.$emit('onEditRackElement', type, element)
     },
-    onShowElementDetail(bShow, detailObj) {
+    onShowElementDetail (bShow, detailObj) {
       this.$emit('onShowElementDetail', bShow, detailObj)
     }
   },
@@ -156,13 +173,13 @@ export default {
     RackElement,
     Checkbox
   },
-  mounted() {
+  mounted () {
     if (!_.isUndefined(this.cabInfo.isNew) && this.cabInfo.isNew) {
       this.clickEdit()
     }
   },
   watch: {
-    showEditPage(newValue, oldValue) {
+    showEditPage (newValue, oldValue) {
       this.editingTitle = false
     }
   }
@@ -199,7 +216,7 @@ export default {
     margin-bottom: 15px;
     position: relative;
     cursor: pointer;
-    input{
+    input {
       display: inline-block;
       width: 180px;
       border: none;
@@ -210,12 +227,12 @@ export default {
       color: #fff;
       border-radius: 4px;
       background: rgba(0, 0, 0, 0.3);
-      &:focus{
+      &:focus {
         border: 1px solid #0993b0;
       }
     }
 
-    &>*{
+    & > * {
       vertical-align: top;
       display: inline-block;
       height: 20px;
@@ -234,14 +251,14 @@ export default {
       overflow: hidden;
       white-space: nowrap;
     }
-    .edit-content{
+    .edit-content {
       position: absolute;
       right: 0;
       top: 0;
       cursor: pointer;
     }
   }
-  .rack-slide	 {
+  .rack-slide {
     margin-left: 75px;
     width: 65px;
     font-size: 14px;
@@ -266,9 +283,8 @@ export default {
     }
   }
   .rack-body {
-
-      position: relative;
-      height: 825px;
+    position: relative;
+    height: 825px;
 
     .rack-side {
       position: absolute;
@@ -293,53 +309,56 @@ export default {
                         transform-origin: right;
             }
     */
-      .rack-side-left {
-        background: url("~assets/bg/rack-cab-side.png") no-repeat;
-          -webkit-transform: rotateY(-90deg) translateX(-100px);
-              -moz-transform: rotateY(-90deg) translateX(-100px);
-              -ms-transform: rotateY(-90deg) translateX(-100px);
-                -o-transform: rotateY(-90deg) translateX(-100px);
-                  transform: rotateY(-90deg) translateX(-100px);
-          -webkit-transform-origin: left;
-              -moz-transform-origin: left;
-              -ms-transform-origin: left;
-                -o-transform-origin: left;
-      }
+    .rack-side-left {
+      background: url("~assets/bg/rack-cab-side.png") no-repeat;
+      -webkit-transform: rotateY(-90deg) translateX(-100px);
+      -moz-transform: rotateY(-90deg) translateX(-100px);
+      -ms-transform: rotateY(-90deg) translateX(-100px);
+      -o-transform: rotateY(-90deg) translateX(-100px);
+      transform: rotateY(-90deg) translateX(-100px);
+      transform-origin: left;
+      -webkit-transform-origin: left;
+      -moz-transform-origin: left;
+      -ms-transform-origin: left;
+      -o-transform-origin: left;
+    }
 
-      .rack-side-front {
-          -webkit-transform: translateZ(120px);
-              -moz-transform: translateZ(120px);
-              -ms-transform: translateZ(120px);
-                -o-transform: translateZ(120px);
-                  transform: translateZ(120px);
-          -webkit-transform-origin: right;
-              -moz-transform-origin: right;
-              -ms-transform-origin: right;
-                -o-transform-origin: right;
-      }
+    .rack-side-front {
+      -webkit-transform: translateZ(120px);
+      -moz-transform: translateZ(120px);
+      -ms-transform: translateZ(120px);
+      -o-transform: translateZ(120px);
+      transform: translateZ(120px);
+      transform-origin: right;
+      -webkit-transform-origin: right;
+      -moz-transform-origin: right;
+      -ms-transform-origin: right;
+      -o-transform-origin: right;
+    }
 
-      .rack-side-back {
-          -webkit-transform: rotateY(180deg) translateX(219px) translateZ(100px);
-              -moz-transform: rotateY(180deg) translateX(219px) translateZ(100px);
-              -ms-transform: rotateY(180deg) translateX(219px) translateZ(100px);
-                -o-transform: rotateY(180deg) translateX(219px) translateZ(100px);
-                  transform: rotateY(180deg) translateX(219px) translateZ(100px);
-          -webkit-transform-origin: right;
-              -moz-transform-origin: right;
-              -ms-transform-origin: right;
-                -o-transform-origin: right;
-      }
+    .rack-side-back {
+      -webkit-transform: rotateY(180deg) translateX(219px) translateZ(100px);
+      -moz-transform: rotateY(180deg) translateX(219px) translateZ(100px);
+      -ms-transform: rotateY(180deg) translateX(219px) translateZ(100px);
+      -o-transform: rotateY(180deg) translateX(219px) translateZ(100px);
+      transform: rotateY(180deg) translateX(219px) translateZ(100px);
+      transform-origin: right;
+      -webkit-transform-origin: right;
+      -moz-transform-origin: right;
+      -ms-transform-origin: right;
+      -o-transform-origin: right;
+    }
 
-    [class^='rack-element0'] {
-        margin-top: 18px !important;
-      }
+    [class^="rack-element0"] {
+      margin-top: 18px !important;
+    }
 
-      [class^='rack-element'] {
-        width: 179px;
-        height: 69px;
-        margin-left: 20px;
-        margin-bottom: 16px;
-      }
+    [class^="rack-element"] {
+      width: 179px;
+      height: 69px;
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
   }
 }
 @keyframes fadeIn {
@@ -356,16 +375,15 @@ export default {
 .rack-body {
   transition: all 1s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform:rotateX(0deg) rotateY(0deg);
-        -moz-transform:rotateX(0deg) rotateY(0deg);
-          -o-transform:rotateX(0deg) rotateY(0deg);
-            transform:rotateX(0deg) rotateY(0deg);
-
+  -webkit-transform: rotateX(0deg) rotateY(0deg);
+  -moz-transform: rotateX(0deg) rotateY(0deg);
+  -o-transform: rotateX(0deg) rotateY(0deg);
+  transform: rotateX(0deg) rotateY(0deg);
 }
 .rack-rotate {
-  -webkit-transform:rotateX(0deg) rotateY(180deg);
-      -moz-transform:rotateX(0deg) rotateY(180deg);
-        -o-transform:rotateX(0deg) rotateY(180deg);
-            transform:rotateX(0deg) rotateY(180deg);
+  -webkit-transform: rotateX(0deg) rotateY(180deg);
+  -moz-transform: rotateX(0deg) rotateY(180deg);
+  -o-transform: rotateX(0deg) rotateY(180deg);
+  transform: rotateX(0deg) rotateY(180deg);
 }
 </style>

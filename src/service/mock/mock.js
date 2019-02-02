@@ -1,7 +1,7 @@
 
 import Test from './sim/index.js'
 
-function Mock(name, settings) {
+function Mock (name, settings) {
   if (name in Test) {
     return new Promise((resolve, reject) => {
       var res = Test[name](settings.data)

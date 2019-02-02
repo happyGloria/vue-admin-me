@@ -41,13 +41,13 @@ export default {
     }
   },
   computed: {
-    getY() {
+    getY () {
       return this.cubeData.map(item => {
         let min = Math.max(item.value / this.maxY, 0.03)
         return item.value > 0 ? Math.max(0.06, min) : 0.03
       })
     },
-    maxY() {
+    maxY () {
       let y = 0
       this.cubeData.map(item => {
         if (item.value > y) {
@@ -58,7 +58,7 @@ export default {
     }
   },
   methods: {
-    getColorFn(item, idx) {
+    getColorFn (item, idx) {
       return {
         top: {
           fill: item.color,

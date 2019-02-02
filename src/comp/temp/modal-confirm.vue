@@ -1,28 +1,35 @@
 <template>
-<div v-show="show" :transition="transition">
-  <div class="modal" @click.self="clickMask">
-    <div class="modal-dialog" :class="modalClass">
-      <div class="modal-content">
-        <!--Header-->
-        <div class="modal-header"  v-if="showHead">
-          <slot name="header">{{title}}</slot>
-        </div>
-        <!--Container-->
-        <div class="modal-body">
-          <slot></slot>
-        </div>
-        <!--Footer-->
-        <div class="modal-footer" v-if="showFoot">
-          <slot name="footer">
-            <div class="okClass" @click="ok">{{okText}}</div>
-            <div class="cancelClass" @click="cancel">{{cancelText}}</div>
-          </slot>
+  <div v-show="show"
+       :transition="transition">
+    <div class="modal"
+         @click.self="clickMask">
+      <div class="modal-dialog"
+           :class="modalClass">
+        <div class="modal-content">
+          <!--Header-->
+          <div class="modal-header"
+               v-if="showHead">
+            <slot name="header">{{title}}</slot>
+          </div>
+          <!--Container-->
+          <div class="modal-body">
+            <slot></slot>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer"
+               v-if="showFoot">
+            <slot name="footer">
+              <div class="okClass"
+                   @click="ok">{{okText}}</div>
+              <div class="cancelClass"
+                   @click="cancel">{{cancelText}}</div>
+            </slot>
+          </div>
         </div>
       </div>
     </div>
+    <div class="modal-backdrop in"></div>
   </div>
-  <div class="modal-backdrop in"></div>
-</div>
 </template>
 
 <script>
@@ -98,13 +105,13 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       duration: null
     }
   },
   computed: {
-    modalClass() {
+    modalClass () {
       return {
         'modal-lg': this.large,
         'modal-sm': this.small,
@@ -112,16 +119,16 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     if (this.show) {
       document.body.className += ' modal-open'
     }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     document.body.className = document.body.className.replace(/\s?modal-open/, '')
   },
   watch: {
-    show(value) {
+    show (value) {
       // 在显示时去掉body滚动条，防止出现双滚动条
       if (value) {
         document.body.className += ' modal-open'
@@ -137,18 +144,18 @@ export default {
     }
   },
   methods: {
-    ok() {
+    ok () {
       this.$emit('ok')
       if (this.closeWhenOK) {
         this.show = false
       }
     },
-    cancel() {
+    cancel () {
       this.$emit('cancel')
       this.show = false
     },
     // 点击遮罩层
-    clickMask() {
+    clickMask () {
       if (!this.force) {
         this.cancel()
       }
@@ -159,67 +166,69 @@ export default {
 </script>
 
 <style lang="less">
-    .modal {
-        display: block;
+.modal {
+  display: block;
 
-        .modal-transition {
-            transition: all .6s ease;
-        }
-        .modal-leave {
-            /* 样式没什么用，但可以让根标签的transitionEnd生效，以去掉modal-leave */
-            border-radius: 1px !important;
-        }
-        .modal-transition .modal-dialog, .modal-transition .modal-backdrop {
-            transition: all .5s ease;
-        }
-        .modal-enter .modal-dialog, .modal-leave .modal-dialog {
-            opacity: 0;
-            transform: translateY(-30%);
-        }
-        .modal-enter .modal-backdrop, .modal-leave .modal-backdrop {
-            opacity: 0;
-        }
-        .modal-header {
-            height: 40px;
-            font-size: 14px;
-            //background-color: #000;
-        }
-        .modal-body {
-            margin: auto auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-        }
-        .modal-footer {
-            position: absolute;
-            bottom: 20px;
-            .footer {
-                position: absolute;
-            }
-        }
-        .okClass, .cancelClass{
-            position: absolute;
-            color: #fff;
-            text-align: center;
-            font-size: 12px;
-            cursor: pointer;
-            width: 84px;
-            height: 26px;
-            bottom: 15px;
-        }
-        .okClass{
-            line-height: 26px;
-            background: #009ddc;
-            left: 148px;
-        }
-        .cancelClass{
-            line-height: 28px;
-            border: 1px solid #1f5882;
-            left: 242px;
-        }
+  .modal-transition {
+    transition: all 0.6s ease;
+  }
+  .modal-leave {
+    /* 样式没什么用，但可以让根标签的transitionEnd生效，以去掉modal-leave */
+    border-radius: 1px !important;
+  }
+  .modal-transition .modal-dialog,
+  .modal-transition .modal-backdrop {
+    transition: all 0.5s ease;
+  }
+  .modal-enter .modal-dialog,
+  .modal-leave .modal-dialog {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  .modal-enter .modal-backdrop,
+  .modal-leave .modal-backdrop {
+    opacity: 0;
+  }
+  .modal-header {
+    height: 40px;
+    font-size: 14px;
+    //background-color: #000;
+  }
+  .modal-body {
+    margin: auto auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .modal-footer {
+    position: absolute;
+    bottom: 20px;
+    .footer {
+      position: absolute;
     }
-
-
+  }
+  .okClass,
+  .cancelClass {
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    width: 84px;
+    height: 26px;
+    bottom: 15px;
+  }
+  .okClass {
+    line-height: 26px;
+    background: #009ddc;
+    left: 148px;
+  }
+  .cancelClass {
+    line-height: 28px;
+    border: 1px solid #1f5882;
+    left: 242px;
+  }
+}
 </style>

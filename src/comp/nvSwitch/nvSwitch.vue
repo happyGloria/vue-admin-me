@@ -33,12 +33,12 @@ export default {
     }
   },
   computed: {
-    text() {
+    text () {
       return this.value ? this.activeValue : this.inactiveValue
     }
   },
   methods: {
-    handleFn() {
+    handleFn () {
       this.$emit('input', !this.value)
     }
   }

@@ -27,12 +27,12 @@ export default {
       type: Object
     }
   },
-  data() {
+  data () {
     return {
       chart: null
     }
   },
-  mounted() {
+  mounted () {
     this.initChart()
     if (this.autoResize) {
       this.__resizeHanlder = debounce(() => {
@@ -47,7 +47,7 @@ export default {
     /* const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
     sidebarElm.addEventListener('transitionend', this.__resizeHanlder) */
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (!this.chart) {
       return
     }
@@ -64,13 +64,13 @@ export default {
   watch: {
     chartData: {
       deep: true,
-      handler(val) {
+      handler (val) {
         this.setOptions(val)
       }
     }
   },
   methods: {
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions ({ expectedData, actualData } = {}) {
       this.chart.setOption({
         xAxis: {
           data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -149,7 +149,7 @@ export default {
         ]
       })
     },
-    initChart() {
+    initChart () {
       this.chart = this.$eCharts.init(this.$el, 'macarons')
       this.setOptions(this.chartData)
     }

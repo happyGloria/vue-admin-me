@@ -31,8 +31,8 @@ export default {
     clz: { type: String, default: '' },
     curNodeKey: { type: Array, default: [] }, // 当前选中节点
     defaultCheckedKeys: { type: Array, default: () => { return [] } }, // 默认选中节点
-    handleCheckChange: { type: Function, default: function() {} },
-    load: { type: Function, default: function() {} }, // 记载
+    handleCheckChange: { type: Function, default: function () {} },
+    load: { type: Function, default: function () {} }, // 记载
     showCheckbox: { type: Boolean, default: false }, // 是否显示选中框
     search: { type: Boolean, default: false },
     lazy: { type: Boolean, default: false },
@@ -56,22 +56,22 @@ export default {
       }
     }
   },
-  data() {
+  data () {
     return {
       filterText: ''
     }
   },
   methods: {
-    setCurrentNode(key) {
+    setCurrentNode (key) {
       this.$refs.tree.setCurrentKey(key)
     },
-    getActive() {
+    getActive () {
       return this.$refs.tree.getCurrentNode()
     },
-    handleNodeClick(data, node) {
+    handleNodeClick (data, node) {
       this.$emit('changeNode', { id: data.id, name: data.name }, data)
     },
-    renderContent($$, params) {
+    renderContent ($$, params) {
       var node = params.node
       return $$(
         'span',
@@ -90,17 +90,17 @@ export default {
         ]
       )
     },
-    filterNode(value, data) {
+    filterNode (value, data) {
       if (!value) return true
       return data.label.indexOf(value) !== -1
     }
   },
   watch: {
-    filterText(val) {
+    filterText (val) {
       this.$refs.tree.filter(val)
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.setCurrentNode(this.curNodeKey[0])
     })

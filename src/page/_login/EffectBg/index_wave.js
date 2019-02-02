@@ -1,12 +1,15 @@
-var SEPARATION = 50, AMOUNTX = 70, AMOUNTY = 70
-var MaxX = AMOUNTX * SEPARATION * 0.5, MaxY = AMOUNTY * SEPARATION * 0.5
+var SEPARATION = 50,
+  AMOUNTX = 70,
+  AMOUNTY = 70
+var MaxX = AMOUNTX * SEPARATION * 0.5,
+  MaxY = AMOUNTY * SEPARATION * 0.5
 var PI2 = Math.PI * 2
 var animationFrameTimer = null
 
-function createPoints(scene) {
+function createPoints (scene) {
   var points = []
   var material = new THREE.SpriteCanvasMaterial({
-    program: function(context) {
+    program: function (context) {
       context.beginPath()
       var radial = context.createRadialGradient(0, 0, 0, 0, 0, 0.4)
       radial.addColorStop(0, 'rgba(171,246,255,1)')
@@ -18,7 +21,7 @@ function createPoints(scene) {
     }
   })
 
-  function createPoint(x, y) {
+  function createPoint (x, y) {
     var point = new THREE.Sprite(material)
     point.position.x = x * SEPARATION - MaxX
     point.position.z = y * SEPARATION - MaxY
@@ -26,12 +29,14 @@ function createPoints(scene) {
     points.push(point)
   }
   for (var ix = 0; ix < AMOUNTX; ix++) {
-    for (var iy = 0; iy < AMOUNTY; iy++) { createPoint(ix, iy) }
+    for (var iy = 0; iy < AMOUNTY; iy++) {
+      createPoint(ix, iy)
+    }
   }
   return points
 }
 
-function WaveBackground(container) {
+function WaveBackground (container) {
   var enabled = true
   var _w = container.offsetWidth,
     _h = container.offsetHeight
@@ -51,14 +56,14 @@ function WaveBackground(container) {
   renderer.setSize(_w, _h)
   container.appendChild(renderer.domElement) // 4. 将渲染器的canvas domElement加入到body中, 这样我们才能在浏览器中看到它
 
-  function renderPoint(x, y) {
+  function renderPoint (x, y) {
     var point = points[x * AMOUNTX + y]
     var v = Math.sin((x + count) * 0.3) + Math.sin((y + count) * 0.5)
     point.position.y = v * 80 - 300
     point.scale.x = point.scale.y = v * 4 + 8
   }
 
-  function animate() {
+  function animate () {
     if (!enabled) {
       window.cancelAnimationFrame(animationFrameTimer)
       return
@@ -79,7 +84,7 @@ function WaveBackground(container) {
     count += 0.1
   }
 
-  function resize(w, h) {
+  function resize (w, h) {
     windowHalfX = w / 2
     windowHalfY = h / 2
     camera.aspect = w / h
@@ -89,9 +94,11 @@ function WaveBackground(container) {
 
   animate()
   return {
-    disable: function() { enabled = false },
+    disable: function () {
+      enabled = false
+    },
     resize: resize,
-    move: function(evt) {
+    move: function (evt) {
       mouseX = evt.clientX - windowHalfX
       mouseY = evt.clientY - windowHalfY
     }
@@ -99,7 +106,7 @@ function WaveBackground(container) {
 }
 
 module.exports = {
-  init(id) {
+  init (id) {
     var waveBg = new WaveBackground(document.querySelector(id))
 
     document.addEventListener('mousemove', waveBg.move)

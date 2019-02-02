@@ -67,7 +67,7 @@ export default {
   components: {
 
   },
-  data() {
+  data () {
     return {
       contactUrl: contactUrl
     }

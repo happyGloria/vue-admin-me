@@ -20,7 +20,7 @@ export default {
     py: Number,
     color: {
       type: Object,
-      default() {
+      default () {
         return {
           top: {},
           ab: {},
@@ -32,14 +32,14 @@ export default {
       }
     }
   },
-  data() {
+  data () {
     return {
       basePoint: '20,215 35,205 52,215 37,225',
       y: 0
     }
   },
   computed: {
-    points() {
+    points () {
       if (this.y == 0) {
         return {
           top: '20,215 35,205 52,215 37,225',
@@ -59,16 +59,16 @@ export default {
     }
   },
   methods: {
-    update(value) {
+    update (value) {
       var me = this
-      function animate() {
+      function animate () {
         requestAnimationFrame(animate)
         TWEEN.update()
       }
 
       new TWEEN.Tween({ tween: me.y })
         .easing(TWEEN.Easing.Linear.None)
-        .onUpdate(function() {
+        .onUpdate(function () {
           me.y = this.tween
         })
         .to({ tween: value }, 1000)
@@ -78,11 +78,11 @@ export default {
     }
   },
   watch: {
-    py(newVal, oldVal) {
+    py (newVal, oldVal) {
       this.update(newVal * 140)
     }
   },
-  mounted() {
+  mounted () {
     this.update(this.py * 140)
   }
 }

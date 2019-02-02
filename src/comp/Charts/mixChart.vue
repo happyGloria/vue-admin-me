@@ -25,7 +25,7 @@
       },
       settings: Object
     },
-    data() {
+    data () {
       let {
         title,
         series,
@@ -38,14 +38,14 @@
         legend
       }
     },
-    mounted() {
+    mounted () {
       this.initChart()
     },
     methods: {
-      initChart() {
+      initChart () {
         var me = this
         this.chart = this.$eCharts.init(document.getElementById(this.id))
-        const xData = (function() {
+        const xData = (function () {
           const data = []
           for (var i = 1; i < 13; i++) {
             data.push(i)

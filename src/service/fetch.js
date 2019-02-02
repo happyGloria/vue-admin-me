@@ -59,7 +59,7 @@ axiosObj.interceptors.response.use(response => {
   return Promise.reject(err)
 })
 
-function formatURL(URL, params) {
+function formatURL (URL, params) {
   var reg = /\/\{(.+?)\}/g
   if (reg.test(URL)) {
     return URL.replace(reg, ($0, $1) => {

@@ -1,22 +1,27 @@
 <template>
-	<div class="dropdown">
-		<a class="btn dropdown-button" @click="open">
-			{{title ? title+' :' : ''}}
-			<span class="selected">{{name}}</span>
-			<span :class="{
+  <div class="dropdown">
+    <a class="btn dropdown-button"
+       @click="open">
+      {{title ? title+' :' : ''}}
+      <span class="selected">{{name}}</span>
+      <span :class="{
 				'pic': true,
 				'open': showMenu
 			}"></span>
-		</a>
-		<transition name="dropdown">
-			<ul class="dropdown-content" v-show="showMenu" :style="{'height':  `${height}px`, maxHeight: '150px'}">
-				<li v-for="item of list" :class="{
+    </a>
+    <transition name="dropdown">
+      <ul class="dropdown-content"
+          v-show="showMenu"
+          :style="{'height':  `${height}px`, maxHeight: '150px'}">
+        <li v-for="item of list"
+            :class="{
 					'dropdown-list': true,
 					'active': v == item.value
-				}" @click="checkFn(item)">{{item.name}}</li>
-			</ul>
-		</transition>
-	</div>
+				}"
+            @click="checkFn(item)">{{item.name}}</li>
+      </ul>
+    </transition>
+  </div>
 </template>
 <script>
 
@@ -36,23 +41,23 @@ export default {
     },
     list: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
   },
-  data() {
+  data () {
     return {
       v: this.value,
       showMenu: false
     }
   },
   computed: {
-    height() {
+    height () {
       if (!this.showMenu) return 0
       return 30 * this.list.length
     },
-    name() {
+    name () {
       let name = ''
       _.map(this.list, (item, idx) => {
         if (item.value == this.v) name = item.name
@@ -61,10 +66,10 @@ export default {
     }
   },
   methods: {
-    open() {
+    open () {
       this.showMenu = !this.showMenu
     },
-    checkFn(item) {
+    checkFn (item) {
       this.showMenu = false
       // if (this.v == item.value) return;
       this.v = item.value
@@ -72,16 +77,16 @@ export default {
     }
   },
   watch: {
-    value(newValue) {
+    value (newValue) {
       this.v = newValue
     }
   },
-  mounted() {
+  mounted () {
     this._closeEvent = EventListener.listen(window, 'click', (e) => {
       if (!this.$el.contains(e.target)) this.showMenu = false
     })
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (this._closeEvent) this._closeEvent.remove()
   }
 }

@@ -1,26 +1,27 @@
 <template>
   <div class="page-block page-echart-line">
-    <el-row type="flex" justify="space-around">
+    <el-row type="flex"
+            justify="space-around">
       <el-col :span="12">
-          <div class="grid-content">
-            <area-chart
-              width="100%" height="100%"
-              :settings = "chartSetting"></area-chart>
-          </div>
-          <div class="grid-content">
-            <mix-chart
-              width="100%" height="100%"
-              :settings = "mixChartSetting"></mix-chart>
-          </div>
+        <div class="grid-content">
+          <area-chart width="100%"
+                      height="100%"
+                      :settings="chartSetting" />
+        </div>
+        <div class="grid-content">
+          <mix-chart width="100%"
+                     height="100%"
+                     :settings="mixChartSetting" />
+        </div>
       </el-col>
       <el-col :span="11">
         <div class="grid-content">
-          <line-chart
-              width="100%" height="100%"
-              :settings = "mixChartSetting"
-              :chart-data = "lineChartData"></line-chart>
+          <line-chart width="100%"
+                      height="100%"
+                      :settings="mixChartSetting"
+                      :chart-data="lineChartData" />
         </div>
-        <div class="grid-content"></div>
+        <div class="grid-content" />
       </el-col>
     </el-row>
   </div>
@@ -54,7 +55,7 @@ export default {
     mixChart,
     lineChart
   },
-  data() {
+  data () {
     var me = this
     return {
       chartSetting: {
@@ -188,7 +189,7 @@ export default {
                     color: '#fff'
                   },
                   position: 'insideTop',
-                  formatter(p) {
+                  formatter (p) {
                     return p.value > 0 ? p.value : ''
                   }
                 }
@@ -207,7 +208,7 @@ export default {
                 label: {
                   show: true,
                   position: 'top',
-                  formatter(p) {
+                  formatter (p) {
                     return p.value > 0 ? p.value : ''
                   }
                 }
@@ -228,7 +229,7 @@ export default {
                 label: {
                   show: true,
                   position: 'top',
-                  formatter(p) {
+                  formatter (p) {
                     return p.value > 0 ? p.value : ''
                   }
                 }

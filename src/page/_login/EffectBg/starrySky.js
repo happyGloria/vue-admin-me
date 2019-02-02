@@ -8,7 +8,7 @@ var ctx = null,
   animationFrameTimer = null,
   maxStars = 1300 // 星星数量
 
-function random(min, max) {
+function random (min, max) {
   if (arguments.length < 2) {
     max = min
     min = 0
@@ -22,14 +22,14 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-function maxOrbit(x, y) {
+function maxOrbit (x, y) {
   var max = Math.max(x, y),
     diameter = Math.round(Math.sqrt(max * max + max * max))
   return diameter / 2
   // 星星移动范围，值越大范围越小
 }
 
-var Star = function() {
+var Star = function () {
   this.orbitRadius = random(maxOrbit(w, h))
   this.radius = random(60, this.orbitRadius) / 8
   // 星星大小
@@ -46,7 +46,7 @@ var Star = function() {
   stars[count] = this
 }
 
-Star.prototype.draw = function() {
+Star.prototype.draw = function () {
   var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
     y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
     twinkle = random(10)
@@ -61,7 +61,7 @@ Star.prototype.draw = function() {
   this.timePassed += this.speed
 }
 
-function init() {
+function init () {
   ctx.globalCompositeOperation = 'source-over'
   ctx.globalAlpha = 0.5 // 尾巴
   ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)'
@@ -73,7 +73,8 @@ function init() {
   }
   animationFrameTimer = window.requestAnimationFrame(init)
 }
-function SkyBg(container) {
+
+function SkyBg (container) {
   if (!container.querySelector('canvas')) {
     var canEl = document.createElement('canvas')
     container.append(canEl)
@@ -105,14 +106,14 @@ function SkyBg(container) {
 }
 
 module.exports = {
-  init(id) {
+  init (id) {
     new SkyBg(document.querySelector(id))
     window.addEventListener('resize', () => {
       new SkyBg(document.querySelector(id))
     })
     return this
   },
-  stop() {
+  stop () {
     window.cancelAnimationFrame(animationFrameTimer)
   }
 }

@@ -7,6 +7,7 @@ $lte7: true !default; //是否兼容IE6，7
 
 @mixin inline-block {
   display: inline-block;
+
   @if $lte7 {
     *display: inline;
     *zoom: 1;
@@ -15,6 +16,7 @@ $lte7: true !default; //是否兼容IE6，7
 
 @mixin float($float: left) {
   float: $float;
+
   @if $lte7 {
     display: line;
   }
@@ -40,6 +42,7 @@ $lte7: true;
   @if $lte7 {
     *zoom: 1;
   }
+
   &:before,
   &:after {
     content: "";
@@ -64,6 +67,7 @@ $lte7: true;
 // 通过先定义@mixin,然后在%调用@mixin来实现传递变量
 @mixin float($float: left) {
   float: $float;
+
   @if $lte7 {
     display: inline;
   }
@@ -77,7 +81,3 @@ $lte7: true;
 @function pxToEm($px, $base:16) {
   @return ($px / $base) * 1em;
 }
-
-
-
-

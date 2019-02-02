@@ -1,10 +1,10 @@
 <template>
   <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
-    <sidebar class="sidebar-container"></sidebar>
+    <sidebar class="sidebar-container" />
     <div class="main-container">
-      <navbar></navbar>
-      <tags-view></tags-view>
-      <app-main></app-main>
+      <navbar />
+      <tags-view />
+      <app-main />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     TagsView
   },
   computed: {
-    sidebar() {
+    sidebar () {
       return this.$store.state.app.sidebar
     }
   }
@@ -29,11 +29,11 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "src/styles/utils/mixins.scss";
-  .app-wrapper {
-    @include clearfix;
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
+@import "src/styles/utils/mixins.scss";
+.app-wrapper {
+  @include clearfix;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
 </style>

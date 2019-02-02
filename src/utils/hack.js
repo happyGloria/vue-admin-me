@@ -1,4 +1,4 @@
-export function tooltips(e) {
+export function tooltips (e) {
   if (!e && $.isIE9()) {
     let list = this.$refs.tooltip
     setTimeout(() => {
@@ -13,7 +13,7 @@ export function tooltips(e) {
   }
 }
 
-export function isIE9() {
+export function isIE9 () {
   let isIE9 = !1
   let browser = $.browser
   if (browser.msie && browser.version < 10) {

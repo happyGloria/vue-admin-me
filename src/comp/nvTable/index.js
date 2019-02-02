@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 import nvTable from './nvTable.vue'
 
-nvTable.install = function(Vue, options) {
+nvTable.install = function (Vue, options) {
   Vue.component(nvTable.name, nvTable)
 }
 

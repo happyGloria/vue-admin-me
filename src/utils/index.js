@@ -1,5 +1,5 @@
 export default {
-  timer(np, fn, time) {
+  timer (np, fn, time) {
     let timer = window.timer = window.timer = {}
     if (!(_.isUndefined(timer[np]))) {
       window.clearTimeout(timer[np])
@@ -9,10 +9,10 @@ export default {
     }
   }
 }
-export function debounce(func, wait, immediate) {
+export function debounce (func, wait, immediate) {
   let timeout, args, context, timestamp, result
 
-  const later = function() {
+  const later = function () {
     // 据上一次触发时间间隔
     const last = +new Date() - timestamp
 
@@ -28,7 +28,7 @@ export function debounce(func, wait, immediate) {
       }
     }
   }
-  return function(...args) {
+  return function (...args) {
     context = this
     timestamp = +new Date()
     const callNow = immediate && !timeout

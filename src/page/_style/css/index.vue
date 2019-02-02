@@ -92,7 +92,7 @@
 <script>
   import imgUrl from '@/assets/img/bird.jpg'
   export default {
-    data() {
+    data () {
       return {
         imgUrl: imgUrl
       }

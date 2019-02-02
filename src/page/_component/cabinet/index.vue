@@ -2,7 +2,7 @@
   <div class="page-comp-2">
     <el-row type="flex" justify="space-around">
       <el-col :span="11">
-        <cab class="cube-item"></cab>
+        <cab class="cube-item" />
       </el-col>
       <el-col :span="12">
       </el-col>
@@ -16,7 +16,7 @@ export default {
   components: {
     cab
   },
-  data() {
+  data () {
     return {
     }
   },

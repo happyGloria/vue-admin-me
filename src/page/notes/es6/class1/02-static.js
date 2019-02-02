@@ -4,7 +4,7 @@
  * 2）实例上调用静态方法，会抛出错误，表示不存在该方法；
  */
 class Foo {
-  static sayHello() {
+  static sayHello () {
     this.a = '123'
     console.log('this.a:', this == Foo) // true
     return 'hello'
@@ -14,4 +14,3 @@ Foo.sayHello()
 
 // let f = new Foo()
 // f.sayHello() // TypeError: f.sayHello is not a function
-

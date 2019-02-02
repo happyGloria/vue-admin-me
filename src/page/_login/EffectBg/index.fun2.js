@@ -1,12 +1,15 @@
-var SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50
-var MaxX = AMOUNTX * SEPARATION * 0.5, MaxY = AMOUNTY * SEPARATION * 0.5
+var SEPARATION = 100,
+  AMOUNTX = 50,
+  AMOUNTY = 50
+var MaxX = AMOUNTX * SEPARATION * 0.5,
+  MaxY = AMOUNTY * SEPARATION * 0.5
 var PI2 = Math.PI * 2
 
-function createParticles(scene) {
+function createParticles (scene) {
   // 创建一个粒子材质，向其传入颜色及粒子渲染函数
   var material = new THREE.ParticleCanvasMaterial({
     color: 0x0078de,
-    program: function(context) {
+    program: function (context) {
       context.beginPath()
       var radial = context.createRadialGradient(0, 0, 0, 0, 0, 0.4)
       radial.addColorStop(0, 'rgba(171, 246, 255, 1)')
@@ -19,7 +22,7 @@ function createParticles(scene) {
   })
 
   var particles = [] // 储存粒子
-  function createParticle(x, y) {
+  function createParticle (x, y) {
     var particle = new THREE.Particle(material)
     particle.position.x = x * SEPARATION - MaxX
     particle.position.z = y * SEPARATION - MaxY
@@ -34,10 +37,12 @@ function createParticles(scene) {
   return particles
 }
 
-function WaveBackground(container) {
+function WaveBackground (container) {
   var enabled = true
-  var _w = window.innerWidth, _h = window.innerHeight
-  var windowHalfX = _w / 2, windowHalfY = _h / 2
+  var _w = window.innerWidth,
+    _h = window.innerHeight
+  var windowHalfX = _w / 2,
+    windowHalfY = _h / 2
   var mouseX = 0,
     mouseY = 0,
     count = 0
@@ -54,12 +59,13 @@ function WaveBackground(container) {
   container.appendChild(renderer.domElement)
   renderer.render(scene, camera) // 奖场景添加到相机，渲染器开始工作
 
-  function renderParticle(x, y, i) {
+  function renderParticle (x, y, i) {
     var particle = particles[i++]
     particle.position.y = (Math.sin((x + count) * 0.3) * 50) + (Math.sin((y + count) * 0.5) * 50)
     particle.scale.x = particle.scale.y = (Math.sin((x + count) * 0.3) + 1) * 2 + (Math.sin((y + count) * 0.5) + 1) * 2
   }
-  function render() {
+
+  function render () {
     camera.position.x += (mouseX - camera.position.x) * 20
     camera.position.y += (-mouseY - camera.position.y) * 20
     camera.lookAt(scene.position)
@@ -72,13 +78,14 @@ function WaveBackground(container) {
     renderer.render(scene, camera)
     count += 0.1
   }
-  function animate() {
+
+  function animate () {
     if (!enabled) return
     requestAnimationFrame(animate)
     render() // 渲染例子
   }
 
-  function resize() {
+  function resize () {
     windowHalfX = _w / 2
     windowHalfY = _h / 2
     camera.aspect = _w / _h
@@ -89,16 +96,18 @@ function WaveBackground(container) {
   animate()
 
   return {
-    disable() { enabled = false },
+    disable () {
+      enabled = false
+    },
     resize,
-    move(evt) {
+    move (evt) {
       mouseX = evt.clientX - windowHalfX
       mouseY = evt.clientY - windowHalfY
     }
   }
 }
 module.exports = {
-  init(id) {
+  init (id) {
     var waveBg = new WaveBackground(document.querySelector(id))
 
     document.addEventListener('mousemove', waveBg.move, false)

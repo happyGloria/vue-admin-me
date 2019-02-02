@@ -1,3 +1,4 @@
 
 import Login from './Login.js'
-export default Object.assign({}, Login)
+import Device from './device.js'
+export default Object.assign({}, Login, Device)

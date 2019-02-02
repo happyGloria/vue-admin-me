@@ -8,16 +8,16 @@
 <script>
 import url from '@/assets/img/bird.jpg'
 export default {
-  data() {
+  data () {
     return {
       url: url
     }
   },
   methods: {
-    runFn() {
+    runFn () {
       var ele = this.$refs.test
       var progress = 0
-      function step(timestamp) {
+      function step (timestamp) {
         progress += 1
         ele.style.width = progress + '%'
         ele.innerHTML = progress + '%'

@@ -1,7 +1,7 @@
 <script>
   export default{
     name: 'formFactory',
-    render: function($$) {
+    render: function ($$) {
       return this.init($$, this.$slots.default)
     },
     props: {

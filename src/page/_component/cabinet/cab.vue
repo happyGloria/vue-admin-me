@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       rotate: true
     }

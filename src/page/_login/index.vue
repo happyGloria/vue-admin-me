@@ -1,30 +1,53 @@
 <template>
   <div class="login-container">
     <div id="canvas-bg"></div>
-    
-    <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+      autocomplete="on"
+      label-position="left"
+    >
       <div class="title-container">
         <h3 class="title">{{$t('login.title')}}</h3>
-        <lang-select class="set-language"></lang-select>
+        <lang-select class="set-language"/>
       </div>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
-          <span class="icon icon-user"></span>
+          <span class="icon icon-user"/>
         </span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
+        <el-input
+          v-model="loginForm.username"
+          name="username"
+          type="text"
+          autocomplete="on"
+          placeholder="username"
+        />
       </el-form-item>
-
       <el-form-item prop="password">
         <span class="svg-container">
-          <span class="icon icon-password"></span>
+          <span class="icon icon-password"/>
         </span>
-        <el-input name="password" :type="passwordType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password" />
+        <el-input
+          v-model="loginForm.password"
+          :type="passwordType"
+          name="password"
+          autocomplete="on"
+          placeholder="password"
+          @keyup.enter.native="handleLogin"
+        />
         <span class="show-pwd" @click="showPwd">
           <span class="icon icon-eye"></span>
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+      <el-button
+        type="primary"
+        style="width:100%;margin-bottom:30px;"
+        :loading="loading"
+        @click.native.prevent="handleLogin"
+      >{{$t('login.logIn')}}</el-button>
 
       <div class="tips">
         <span>{{$t('login.username')}} : admin</span>
@@ -35,20 +58,22 @@
         <span>{{$t('login.password')}} : {{$t('login.any')}}</span>
       </div>
 
-      <el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>
+      <el-button
+        class="thirdparty-button"
+        type="primary"
+        @click="showDialog=true"
+      >{{$t('login.thirdparty')}}</el-button>
     </el-form>
 
-    
     <!-- 星空背景 -->
     <!-- <canvas id="canvas-starry" ref="canvasStarry" v-if="starryBg"></canvas> -->
-
     <!-- <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
       {{$t('login.thirdpartyTips')}}
       <br/>
       <br/>
       <br/>
       <social-sign />
-    </el-dialog> -->
+    </el-dialog>-->
   </div>
 </template>
 
@@ -63,7 +88,7 @@ import rainbow from './EffectBg/rainbow.js'
 export default {
   components: { LangSelect, SocialSign },
   name: 'login',
-  data() {
+  data () {
     const validateUsername = (rule, value, callback) => {
       if (!isvalidUsername(value)) {
         callback(new Error('Please enter the correct user name'))
@@ -96,14 +121,14 @@ export default {
     }
   },
   methods: {
-    showPwd() {
+    showPwd () {
       if (this.passwordType === 'password') {
         this.passwordType = ''
       } else {
         this.passwordType = 'password'
       }
     },
-    handleLogin() {
+    handleLogin () {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
@@ -119,21 +144,21 @@ export default {
         }
       })
     },
-    initBg() {
+    initBg () {
       this.waveBg = ThreeAnimation.init('#canvas-bg')
     },
-    initBg2() {
+    initBg2 () {
       // 激活画布
       this.animation = animation.init('#canvas-bg')
     },
-    initBg3() {
+    initBg3 () {
       rainbow.init('#canvas-bg')
     }
   },
-  mounted() {
+  mounted () {
     this.initBg()
   },
-  beforeDestroy() {
+  beforeDestroy () {
     window.removeEventListener('resize')
     if (this.waveBg) {
       this.waveBg.disable()
@@ -150,10 +175,9 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-
-$bg:#2d3a4b;
+$bg: #2d3a4b;
 $dark_gray: #889aa4;
-$light_gray:#eee;
+$light_gray: #eee;
 
 #canvas-bg {
   position: absolute;
@@ -179,6 +203,7 @@ $light_gray:#eee;
       color: $light_gray;
       height: 47px;
       &:-webkit-autofill {
+        box-shadow: 0 0 0px 1000px $bg inset !important;
         -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
         -webkit-text-fill-color: #fff !important;
       }
@@ -192,7 +217,7 @@ $light_gray:#eee;
   }
   .icon {
     font-size: 20px;
-    color:#ccc;
+    color: #ccc;
   }
 }
 

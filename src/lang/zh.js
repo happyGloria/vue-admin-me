@@ -27,11 +27,17 @@ export default {
     eLineChart: '折线图',
     pieChart: '饼状图',
     mixChart: '混合图表',
+    mix: '混合图表',
+    cube: '立体图表',
 
     Table: '表格',
+    treeTable: '树形图表',
+    mixTable: '混合图表',
 
     style: '样式',
     css: '样式',
+    style3d: '3d',
+    svg: 'svg',
 
     example: '综合实例',
     shopcar: '购物车',
@@ -40,7 +46,6 @@ export default {
     dragTable: '拖拽Table',
     inlineEditTable: 'Table内编辑',
     complexTable: '综合Table',
-    treeTable: '树形表格',
     customTreeTable: '自定义树表',
     tab: 'Tab',
     form: '表单',

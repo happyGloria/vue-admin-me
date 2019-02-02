@@ -25,7 +25,7 @@
       },
       settings: Object
     },
-    data() {
+    data () {
       let {
         series,
         legend,
@@ -38,16 +38,16 @@
         xAxis
       }
     },
-    mounted() {
+    mounted () {
       this.initChart()
     },
-    beforeDestroy() {
+    beforeDestroy () {
       if (!this.chart) return
       this.chart.dispose()
       this.chart = null
     },
     methods: {
-      initChart() {
+      initChart () {
         this.chart = echarts.init(document.getElementById(this.id))
         let me = this
         this.chart.setOption({

@@ -44,7 +44,7 @@ const user = {
 
   actions: {
     // 用户名登录
-    LoginByUsername({ commit }, userInfo) {
+    LoginByUsername ({ commit }, userInfo) {
       // const username = userInfo.username.trim()
       debugger
       return new Promise((resolve, reject) => {
@@ -60,7 +60,7 @@ const user = {
     },
 
     // 获取用户信息
-    GetUserInfo({ commit, state }) {
+    GetUserInfo ({ commit, state }) {
       return new Promise((resolve, reject) => {
         Service.getUserInfo(state.token).then(response => {
           if (!response.data) { // 由于mockjs 不支持自定义状态码只能这样hack
@@ -93,7 +93,7 @@ const user = {
     // },
 
     // 登出
-    LogOut({ commit, state }) {
+    LogOut ({ commit, state }) {
       return new Promise((resolve, reject) => {
         Service.logout(state.token).then(() => {
           commit('SET_TOKEN', '')
@@ -107,7 +107,7 @@ const user = {
     },
 
     // 前端 登出
-    FedLogOut({ commit }) {
+    FedLogOut ({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         removeToken()
@@ -116,7 +116,7 @@ const user = {
     },
 
     // 动态修改权限
-    ChangeRoles({ commit }, role) {
+    ChangeRoles ({ commit }, role) {
       return new Promise(resolve => {
         commit('SET_TOKEN', role)
         setToken(role)

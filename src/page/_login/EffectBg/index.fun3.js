@@ -2,12 +2,13 @@
 // three的三要素
 var camera, scene, renderer
 // 跟踪鼠标位置
-var mouseX = 0, mouseY = 0,
+var mouseX = 0,
+  mouseY = 0,
   // 一个数组，用于存储我们的粒子
   particles = []
 const PI2 = Math.PI * 2
 // 初始化
-function init(container) {
+function init (container) {
   // 照相机的参数
   camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 1, 4000)
   // 将相机屏幕外移动
@@ -29,14 +30,14 @@ function init(container) {
   setInterval(update, 1000 / 10)
 }
 
-function update() {
+function update () {
   // 作用是将粒子向前移动
   updateParticles()
   // 从相机的视角渲染场景
   renderer.render(scene, camera)
 }
 
-function makeParticles() {
+function makeParticles () {
   var particle, material // 创建粒子和材质
   for (var zpos = -1000; zpos < 1000; zpos += 20) {
     // 创建材质
@@ -60,7 +61,7 @@ function makeParticles() {
   }
 }
 
-function particleRender(context) {
+function particleRender (context) {
   context.beginPath()
   var radial = context.createRadialGradient(0, 0, 0, 0, 0, 0.4)
   radial.addColorStop(0, 'rgba(171,246,255,1)')
@@ -71,15 +72,15 @@ function particleRender(context) {
   context.fill()
 }
 
-function getRandomColor() {
+function getRandomColor () {
   var r = 255 * Math.random() | 0,
     g = 255 * Math.random() | 0,
     b = 255 * Math.random() | 0
-    // console.log( parseInt(r, 16) );
+  // console.log( parseInt(r, 16) );
   return '0x' + parseInt(r, 16) + parseInt(g, 16) + parseInt(b, 16)
 }
 
-function updateParticles() {
+function updateParticles () {
   for (var i = 0; i < particles.length; i++) {
     var particle = particles[i]
     particle.position.z += mouseY * 0.1
@@ -89,15 +90,14 @@ function updateParticles() {
   }
 }
 
-function onMouseMove(event) {
+function onMouseMove (event) {
   mouseX = event.cilentX
   mouseY = event.clientY
 }
 
 module.exports = {
-  init(id) {
+  init (id) {
     init(document.querySelector(id))
   },
-  stop() {
-  }
+  stop () {}
 }

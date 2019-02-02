@@ -1,5 +1,6 @@
 var ctx = null
-var w = 0, h = 0
+var w = 0,
+  h = 0
 const PI2 = Math.PI * 2
 var opts = {
     lineCount: 100,
@@ -30,7 +31,7 @@ var opts = {
   tick = 0,
   first = true
 
-function init() {
+function init () {
   lines.length = stars.length = 0
   ctx.globalCompositeOperation = 'source-over'
   ctx.fillStyle = '#333'
@@ -42,13 +43,13 @@ function init() {
   }
 }
 
-function loop() {
+function loop () {
   window.requestAnimationFrame(loop)
   step()
   draw()
 }
 
-function step() {
+function step () {
   tick += 0.5
 
   if (lines.length < opts.lineCount && Math.random() < 0.5) {
@@ -59,15 +60,15 @@ function step() {
     stars.push(new Star())
   }
 
-  lines.map(function(line) {
+  lines.map(function (line) {
     line.step()
   })
-  stars.map(function(star) {
+  stars.map(function (star) {
     star.step()
   })
 }
 
-function draw() {
+function draw () {
   ctx.shadowBlur = 0
   ctx.globalCompositeOperation = 'source-over'
   ctx.fillStyle = 'rgba(0,0,0,alp)'.replace('alp', opts.repaintAlpha)
@@ -80,7 +81,7 @@ function draw() {
   ctx.scale(opts.ellipseAxisMultiplierX, opts.ellipseAxisMultiplierY)
 
   // ctx.shadowBlur here almost does nothing
-  lines.map(function(line) {
+  lines.map(function (line) {
     line.draw()
   })
 
@@ -88,15 +89,15 @@ function draw() {
   ctx.rotate(-opts.ellipseTilt)
   ctx.translate(-opts.ellipseCX, -opts.ellipseCY)
 
-  stars.map(function(star) {
+  stars.map(function (star) {
     star.draw()
   })
 }
 
-function Line() {
+function Line () {
   this.reset()
 }
-Line.prototype.reset = function() {
+Line.prototype.reset = function () {
   this.rad = Math.random() * PI2
   this.len = opts.ellipseBaseRadius + Math.random() * opts.ellipseAddedRadius
   this.lenVel = opts.lineBaseVel + Math.random() * opts.lineAddedVel
@@ -108,7 +109,7 @@ Line.prototype.reset = function() {
 
   this.alpha = 0.2 + Math.random() * 0.8
 }
-Line.prototype.step = function() {
+Line.prototype.step = function () {
   --this.life
   // var ratio = 1 - 0.1 * this.life / this.originalLife
   this.px = this.x
@@ -124,7 +125,7 @@ Line.prototype.step = function() {
     this.reset()
   }
 }
-Line.prototype.draw = function() {
+Line.prototype.draw = function () {
   var ratio = Math.abs(this.life / this.originalLife - 1 / 2)
 
   ctx.lineWidth = ratio * 5
@@ -139,22 +140,22 @@ Line.prototype.draw = function() {
   ctx.stroke()
 }
 
-function Star() {
+function Star () {
   this.reset()
 }
-Star.prototype.reset = function() {
+Star.prototype.reset = function () {
   this.x = Math.random() * w
   this.y = Math.random() * h
   this.life = opts.starBaseLife + Math.random() * opts.starAddedLife
 }
-Star.prototype.step = function() {
+Star.prototype.step = function () {
   --this.life
 
   if (this.life <= 0) {
     this.reset()
   }
 }
-Star.prototype.draw = function() {
+Star.prototype.draw = function () {
   ctx.fillStyle = ctx.shadowColor = 'hsla(hue, 80%, 50%, .2)'
     .replace('hue', tick + this.x / w * 100)
   ctx.shadowBlur = this.life
@@ -162,7 +163,7 @@ Star.prototype.draw = function() {
 }
 
 module.exports = {
-  init(id) {
+  init (id) {
     var wrapper = document.querySelector(id)
     var c = document.createElement('canvas')
     wrapper.appendChild(c)
@@ -173,7 +174,7 @@ module.exports = {
     opts.ellipseCY = h / 2
     init()
   },
-  resize() {
+  resize () {
     opts.ellipseCX = window.innerWidth / 2
     opts.ellipseCY = window.innerHeight / 2
   }

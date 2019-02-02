@@ -77,7 +77,7 @@ let defaults = {
     totalSize: 0,
     pageSize: 20
   },
-  rowClick(row, column, cell, event) { },
+  rowClick (row, column, cell, event) { },
   expandAble: false
 }
 export default {
@@ -85,7 +85,7 @@ export default {
   props: {
     setting: Object
   },
-  data: function() {
+  data: function () {
     let {
       ajax,
       selectable,
@@ -120,23 +120,23 @@ export default {
       tBodyHeight: 0 // 总页数
     }
   },
-  mounted() {
+  mounted () {
     this.resizeFn()
     window.onresize = this.resizeFn
   },
   methods: {
-    resizeFn() {
+    resizeFn () {
       var $contaner = this.$el
       var $toolBar = this.$el.children[0]
       /*   $foot = this.$el.children[2] */
-      function getFootHeigt() {
+      function getFootHeigt () {
         // var h = ($foot.css('display') === 'none') ? 40 : $foot.clientHeight
         /* $($foot).is(':hidden') */
         return 42
       }
       this.tBodyHeight = $contaner.clientHeight - $toolBar.clientHeight - getFootHeigt()
     },
-    getCell(item, scope) {
+    getCell (item, scope) {
       if (item.type == 'index') {
         return this.pageSize * (this.pageNo - 1) + (scope.$index + 1)
       } else if (item.format) {
@@ -145,7 +145,7 @@ export default {
         return scope.row[item.key]
       }
     },
-    init(args) {
+    init (args) {
       var pageInfo = {
         pageNo: this.pageNo,
         pageSize: this.pageSize
@@ -160,33 +160,33 @@ export default {
         this.loading = !1
       })
     },
-    clear(cbFn) {
+    clear (cbFn) {
       this.list = []
       this.pageNo = 1
       this.pageSize = defaults.pager.pageSize
       cbFn && cbFn()
     },
-    sizeChange(size) {
+    sizeChange (size) {
       this.pageSize = size
       this.init({
         pageNo: 1,
         pageSize: size
       })
     },
-    setColumn(column) {
+    setColumn (column) {
       this.column = column
     },
-    currentChange(num) {
+    currentChange (num) {
       this.pageNo = num
       this.init({
         pageNo: this.pageNo,
         pageSize: this.pageSize
       })
     },
-    getChecked() {
+    getChecked () {
       return this.aChecked
     },
-    selectionChange(arr) {
+    selectionChange (arr) {
       this.aChecked = arr
     }
   }

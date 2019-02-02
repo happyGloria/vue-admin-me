@@ -16,25 +16,25 @@ const userMap = {
   }
 }
 
-Test.logout = function(params) {
+Test.logout = function (params) {
   return {
     'retCode': 1
   }
 }
-Test.login = function(params) {
+Test.login = function (params) {
   return {
     data: userMap[params['username']],
     retCode: 1
   }
 }
-Test.loginByUsername = function(param) {
+Test.loginByUsername = function (param) {
   return {
     data: userMap[param.username],
     retCode: 1
   }
 }
 
-Test.getUserInfo = function(token) {
+Test.getUserInfo = function (token) {
   // const { token } = param2Obj(params.url)
   if (userMap[token]) {
     return {

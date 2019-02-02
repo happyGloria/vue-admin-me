@@ -1,5 +1,3 @@
 <template>
-  <div class="page-echart-pie">
-
-  </div>
+  <div class="page-echart-pie"></div>
 </template>

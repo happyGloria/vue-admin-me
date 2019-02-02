@@ -2,7 +2,7 @@
   <section class="app-main">
     <transition name="fade" mode="out-in">
       <keep-alive :include="cachedViews">
-        <router-view></router-view>
+        <router-view/>
       </keep-alive>
     </transition>
   </section>
@@ -12,7 +12,7 @@
 export default {
   name: 'AppMain',
   computed: {
-    cachedViews() {
+    cachedViews () {
       return this.$store.state.tagsView.cachedViews
     }
     // key() {
@@ -23,7 +23,7 @@ export default {
 </script>
 <style lang="scss">
 .app-main {
-  height: calc(100% - 84px)
+  height: calc(100% - 84px);
 }
 </style>
 
