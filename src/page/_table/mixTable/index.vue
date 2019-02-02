@@ -2,6 +2,7 @@
   <div class="page-wrap">
     <tree-table :data="data"
                 :columns="columns"
+                :selected="[7,11,12]"
                 border
                 @getAuth="getAuth" />
   </div>

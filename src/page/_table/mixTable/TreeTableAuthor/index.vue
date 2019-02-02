@@ -50,14 +50,14 @@
               {{interset.text}}
             </el-checkbox>
           </el-checkbox-group>
-          <!--  -->
+          
           <el-checkbox v-else-if="scope.row.type === 1"
                        :indeterminate="scope.row.isIndeterminate"
                        v-model="scope.row.checkAll"
                        @change="handleCheckAllChange(scope.$index, scope.row, scope.row[column.option])">
             {{scope.row[column.name]}}
           </el-checkbox>
-
+          <!-- 全选 -->
           <div v-else
                style="display:inline-block;">
             <el-checkbox :indeterminate="scope.row.isIndeterminate"
@@ -67,7 +67,7 @@
             </el-checkbox>
             <span>{{scope.row[column.name]}}</span>
           </div>
-          <!-- 
+          <!-- <span v-else>{{scope.row[column.name]}}</span>
           <el-checkbox v-if="scope.row[column.act]"
                        :indeterminate="scope.row.isIndeterminate"
                        v-model="scope.row.checkAll"
@@ -125,9 +125,6 @@ export default {
   created () {
     this.defaultSelcet()
   },
-  mounted () {
-    console.log('this.$attrs:', this.$attrs)
-  },
   methods: {
     showRow: function (row) {
       const show = (row.row.parent ? (row.row.parent._expanded && row.row.parent._show) : true)
@@ -156,9 +153,7 @@ export default {
         row.isIndeterminate = false
       } else if (!row.selectchecked.length) {
         let arr = []
-        opt.forEach(element => {
-          arr.push(element.id)
-        })
+        opt.forEach(element => arr.push(element.id))
         row.selectchecked = arr
         row.checkAll = true
         row.isIndeterminate = false
