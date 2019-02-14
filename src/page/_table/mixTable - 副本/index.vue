@@ -27,15 +27,15 @@ export default {
           text: '菜单列表',
           name: 'text',
           width: 200,
-          option: 'child'
+          option: 'sonData1'
         },
-        /* {
+        {
           text: '功能权限',
-          name: 'child',
+          name: 'sonData1',
           width: 200,
-          option: 'child',
+          option: 'sonData1',
           act: 'act'
-        }, */
+        },
         {
           text: '实时视频',
           width: 100,

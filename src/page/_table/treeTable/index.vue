@@ -2,8 +2,10 @@
   <div class="page-container">
     <el-table :data="data"
               border
+              stripe
               style="width: 100%">
       <el-table-column v-for="col in columns"
+                       :key="col.name"
                        :prop="col.prop"
                        :label="col.label"
                        :width="col.width"

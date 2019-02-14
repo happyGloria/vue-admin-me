@@ -1,122 +1,143 @@
-export const arr = [{
-  type: 0,
-  'checked': false,
-  'id': '1',
-  'text': '用户管理',
-  isIndeterminate: false,
-  checkAll: false,
-  act: '全选',
-  children: [
-    {
-      type: 1,
-      id: 6,
-      'text': '用户列表',
-      'parentId': '-1',
-      'checked': false,
-      selectchecked: ['7'],
-      checkAll: false,
-      isIndeterminate: false,
-      'sonData1': [
-        {
-          type: 2,
-          'text': '用户新增',
-          'parentId': '6',
-          'checked': false,
-          'id': '7'
-        },
-        {
-          type: 2,
-          'text': '用户修改',
-          'parentId': '6',
-          'checked': false,
-          'id': '8'
-        },
-        {
-          type: 2,
-          'text': '用户删除',
-          'parentId': '6',
-          'checked': false,
-          'id': '9'
-        }
-      ]
-    },
-    {
-      type: 1,
-      id: 13,
-      'text': '角色列表',
-      'parentId': '-1',
-      'checked': false,
-      selectchecked: ['10', '11', '12'],
-      checkAll: false,
-      isIndeterminate: false,
-      'sonData1': [
-        {
-          type: 2,
-          'text': '角色授权',
-          'parentId': '6',
-          'checked': false,
-          'id': '10'
-        },
-        {
-          type: 2,
-          'text': '角色修改',
-          'parentId': '6',
-          'checked': false,
-          'id': '11'
-        },
-        {
-          type: 2,
-          'text': '角色删除',
-          'parentId': '6',
-          'checked': false,
-          'id': '12'
-        }
-      ]
-    }
-  ]
-},
-{
-  type: 0,
-  'checked': false,
-  'id': '2',
-  'text': '设备管理',
-  isIndeterminate: false,
-  checkAll: false,
-  act: '全选',
-  children: [
-    {
-      type: 1,
-      id: 6,
-      'text': '设备列表',
-      'parentId': '-1',
-      'checked': false,
-      selectchecked: [],
-      checkAll: false,
-      isIndeterminate: false,
-      'sonData1': [
-        {
-          type: 2,
-          'text': '设备新增',
-          'parentId': '6',
-          'checked': false,
-          'id': '17'
-
-        },
-        {
-          type: 2,
-          'text': '设备修改',
-          'parentId': '6',
-          'checked': false,
-          'id': '18'
-        },
-        {
-          type: 2,
-          'text': '设备删除',
-          'parentId': '6',
-          'checked': false,
-          'id': '19'
-        }
-      ]
-    }]
-}
+export const arr = [
+  {
+    type: 0,
+    'id': '1',
+    'checked': false,
+    'text': '上地',
+    icon: 'Station',
+    isIndeterminate: false,
+    checkAll: false,
+    act: '全选',
+    children: [
+      {
+        type: 1,
+        'id': 6,
+        'text': '分区1',
+        icon: 'Zone',
+        'parentId': '1',
+        'checked': false,
+        selectchecked: ['50'],
+        checkAll: false,
+        isIndeterminate: false,
+        children: [
+          {
+            type: 1,
+            id: '50',
+            parentId: '6',
+            text: '摄像机50',
+            icon: 'Camera-1',
+            checkAll: false,
+            isIndeterminate: false,
+            checked: true
+          },
+          {
+            type: 1,
+            id: '51',
+            parentId: '6',
+            text: '摄像机51',
+            icon: 'Camera-1',
+            checkAll: false,
+            isIndeterminate: false,
+            checked: true
+          },
+          {
+            type: 1,
+            id: '52',
+            parentId: '6',
+            text: '摄像机52',
+            icon: 'Camera-1',
+            checkAll: false,
+            isIndeterminate: false,
+            checked: true
+          }
+        ]
+      },
+      {
+        type: 1,
+        'id': 13,
+        'text': '分区2',
+        'parentId': '-1',
+        'checked': false,
+        icon: 'Zone',
+        selectchecked: ['60', '61', '62'],
+        checkAll: false,
+        isIndeterminate: false,
+        children: [
+          {
+            type: 1,
+            id: '60',
+            parentId: '13',
+            text: '摄像机60',
+            icon: 'Camera-1',
+            checkAll: false,
+            isIndeterminate: false,
+            checked: true
+          },
+          {
+            type: 1,
+            id: '61',
+            parentId: '13',
+            text: '摄像机61',
+            icon: 'Camera-1',
+            checkAll: false,
+            isIndeterminate: false,
+            checked: true
+          },
+          {
+            type: 1,
+            id: '62',
+            parentId: '13',
+            text: '摄像机62',
+            icon: 'Camera-1',
+            checkAll: false,
+            isIndeterminate: false,
+            checked: true
+          }
+        ]
+      }
+    ]
+  }
+  /* {
+    type: 0,
+    'id': '2',
+    'checked': false,
+    'text': '分区3',
+    isIndeterminate: false,
+    checkAll: false,
+    act: '全选',
+    children: [
+      {
+        type: 1,
+        'id': 6,
+        'text': '设备列表',
+        'parentId': '-1',
+        'checked': false,
+        selectchecked: [],
+        checkAll: false,
+        isIndeterminate: false,
+        'child': [
+          {
+            type: 2,
+            'id': '17',
+            'text': '设备新增',
+            'parentId': '6',
+            'checked': false
+          },
+          {
+            type: 2,
+            'id': '18',
+            'text': '设备修改',
+            'parentId': '6',
+            'checked': false
+          },
+          {
+            type: 2,
+            'id': '19',
+            'text': '设备删除',
+            'parentId': '6',
+            'checked': false
+          }
+        ]
+      }]
+  } */
 ]

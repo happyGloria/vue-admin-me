@@ -3,27 +3,44 @@
     <el-table :data="formatData"
               :row-style="showRow"
               v-bind="$attrs">
-      <el-table-column v-for="(col, index) in columns"
-                       :key="col.name"
-                       :label="col.text"
-                       :width="col.width"
-                       header-align="center"
-                       :align="index === 0 ? 'left' : 'center'">
+      <!--  <el-table-column v-if="columns.length===0"
+                       width="150">
         <template slot-scope="scope">
-          <!-- 缩进 && 展开与收缩按钮 -->
-          <span v-if="index === 0"
-                v-for="space in scope.row._level"
+          <span v-for="space in scope.row._level"
                 :key="space"
                 class="ms-tree-space" />
-          <span v-if="iconShow(index, scope.row)"
-                class="tree-ctrl"
+          <span class="tree-ctrl"
+                v-if="iconShow(0,scope.row)"
                 @click="toggleExpanded(scope.$index)">
             <i v-if="!scope.row._expanded"
                class="el-icon-plus" />
             <i v-else
                class="el-icon-minus" />
           </span>
-          <!-- 多选 -->
+          {{ scope.$index}}
+        </template>
+      </el-table-column> -->
+      <!-- column -->
+      <el-table-column v-for="(col, index) in columns"
+                       :key="col.name"
+                       :label="col.text"
+                       :width="col.width"
+                       header-align="center"
+                       align="center">
+        <template slot-scope="scope">
+          <!-- 缩进 && 展开与收缩按钮 -->
+          <span v-if="index === 0"
+                v-for="space in scope.row._level"
+                :key="space"
+                class="ms-tree-space" />
+          <span class="tree-ctrl"
+                v-if="iconShow(index, scope.row)"
+                @click="toggleExpanded(scope.$index)">
+            <i v-if="!scope.row._expanded"
+               class="el-icon-plus" />
+            <i v-else
+               class="el-icon-minus" />
+          </span>
           <el-checkbox-group v-if="Array.isArray(scope.row[col.name])"
                              v-model="scope.row.selectchecked"
                              @change="handleCheckedCitiesChange(scope.$index, scope.row, scope.row[col.option])">
@@ -38,13 +55,8 @@
                        v-model="scope.row.checkAll"
                        :indeterminate="scope.row.isIndeterminate"
                        @change="handleCheckAllChange(scope.$index, scope.row, scope.row[col.option])">
-            <span v-if="index === 0">
-              <i :class="`icon icon-${scope.row.icon}`"
-                 style="color: #29d;" />
-            </span>
             {{scope.row[col.name]}}
           </el-checkbox>
-
           <div v-else
                style="display:inline-block;">
             <el-checkbox :indeterminate="scope.row.isIndeterminate"
@@ -52,16 +64,22 @@
                          @change="handleCheckAllChange1(scope.$index, scope.row, col.option)">
               {{ scope.row[col.act] }}
             </el-checkbox>
-            <span v-if="index === 0">
-              <i :class="`icon icon-${scope.row.icon}`"
-                 style="color: #29d;" />
-            </span>
             <span>{{scope.row[col.name]}}</span>
           </div>
+          <!-- <span v-else>{{scope.row[col.name]}}</span>
+          <el-checkbox v-if="scope.row[col.act]"
+                       :indeterminate="scope.row.isIndeterminate"
+                       v-model="scope.row.checkAll"
+                       @change="handleCheckAllChange1(scope.$index, scope.row, col.option)">
+            {{scope.row[col.act]}}
+          </el-checkbox> -->
         </template>
       </el-table-column>
       <slot />
     </el-table>
+    <!-- <footer>
+      <el-button @click="getAuth">确定</el-button>
+    </footer> -->
   </div>
 </template>
 
@@ -103,9 +121,9 @@ export default {
       return func.apply(null, args)
     }
   },
-  /* created () {
+  created () {
     this.defaultSelcet()
-  }, */
+  },
   methods: {
     showRow (row) {
       const show = (row.row.parent ? (row.row.parent._expanded && row.row.parent._show) : true)
@@ -123,7 +141,8 @@ export default {
     },
     handleCheckAllChange (index, row, opt) {
       this.cc()
-      /* if (row.selectchecked.length && row.selectchecked.length !== opt.length) {
+
+      if (row.selectchecked.length && row.selectchecked.length !== opt.length) {
         let arr = []
         opt.forEach(element => {
           arr.push(element.id)
@@ -141,30 +160,24 @@ export default {
         row.selectchecked = []
         row.checkAll = false
         row.isIndeterminate = false
-      } */
+      }
     },
     handleCheckedCitiesChange (index, row, opt) {
       row.checkAll = row.selectchecked.length === opt.length
       row.isIndeterminate = row.selectchecked.length > 0 && row.selectchecked.length < opt.length
       this.cc()
     },
-    handleCheckAllChange1 (index, row, opt, arr = []) {
-      let me = this
-      debugger
-      // let arr = []
+    handleCheckAllChange1 (index, row, opt) {
       if (row.children) {
         row.children.forEach(val => {
+          let arr = []
           if (row.checkAll) {
-            /* val[opt].forEach(element => {
+            val[opt].forEach(element => {
               arr.push(element.id)
-            }) */
-            if (val.children) {
-              me.handleCheckAllChange1(null, val, null, arr)
-            } else {
-              val.selectchecked = [].concat(arr)
-              val.checkAll = true
-              val.isIndeterminate = false
-            }
+            })
+            val.selectchecked = arr
+            val.checkAll = true
+            val.isIndeterminate = false
           } else {
             val.selectchecked = []
             val.checkAll = false
