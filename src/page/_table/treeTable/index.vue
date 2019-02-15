@@ -1,60 +1,73 @@
 <template>
-  <div class="page-container">
-    <el-table :data="data"
-              border
-              stripe
-              style="width: 100%">
-      <el-table-column v-for="col in columns"
-                       :key="col.name"
-                       :prop="col.prop"
-                       :label="col.label"
-                       :width="col.width"
-                       :align="col.align">
-      </el-table-column>
-    </el-table>
+  <div class="page-wrap">
+    <tree-table :data="data"
+                :columns="columns"
+                :selected="[7,11,12]"
+                border
+                @getAuth="getAuth" />
   </div>
 </template>
 
 <script>
-import { array2tree } from '@/utils/arr.js'
+/**
+  Explain           根据花裤衩的表格改的,
+  isIndeterminate   控制多选半选中状态，
+  checkAll          控制全选中状态
+  selectchecked     放置sonData1选中项
+*/
+import treeTable from './TreeTableAuthor'
+import { arr as treeData } from './data.js'
 export default {
+  components: { treeTable },
   data () {
     return {
       columns: [
         {
-          prop: 'name',
-          label: '节点名称',
-          align: 'center',
-          width: 200
+          text: '菜单列表',
+          name: 'text',
+          width: 200,
+          option: 'sonData1'
         },
         {
-          prop: 'ptz',
-          label: '云台控制',
-          align: 'center',
-          width: 100
+          text: '功能权限',
+          name: 'sonData1',
+          width: 400,
+          option: 'sonData1',
+          act: 'act'
         },
         {
-          prop: 'real',
-          label: '实时视频',
-          align: 'center',
-          width: 100
+          text: '实时视频',
+          width: 100,
+          name: 'real'
+        },
+        {
+          text: '云台控制',
+          width: 100,
+          name: 'ptz'
         }
       ],
-      data: []
+      data: treeData
     }
   },
-  mounted () {
-    Service.getTableTree().then(({ items }) => {
-      this.data = array2tree(items, 'id', 'parentId')
-      // console.log('this.data:', this.data)
-    })
+  methods: {
+    getAuth (data) {
+      let opt = []
+      data.forEach(val => {
+        opt.push(val.id)
+        if (val.children) {
+          val.children.forEach(el => {
+            console.log(val.id)
+            if (el.selectchecked.length) {
+              opt.push(el.id)
+              opt.push(el.selectchecked)
+            }
+          })
+        }
+      })
+      console.log(data)
+      opt = opt.join().split(',').filter(n => { return n })
+      console.log(opt)
+    }
   }
 }
 </script>
-
-<style lang="less" scoped>
-.page-container {
-  height: 100%;
-  overflow-y: auto;
-}
-</style>

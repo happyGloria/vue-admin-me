@@ -7,56 +7,41 @@
                        :key="col.name"
                        :label="col.text"
                        :width="col.width"
-                       header-align="center"
-                       :align="index === 0 ? 'left' : 'center'">
+                       :align="index === 0 ? 'left' : 'center'"
+                       header-align="center">
         <template slot-scope="scope">
           <!-- 缩进 && 展开与收缩按钮 -->
-          <span v-if="index === 0"
-                v-for="space in scope.row._level"
-                :key="space"
-                class="ms-tree-space" />
-          <span v-if="iconShow(index, scope.row)"
-                class="tree-ctrl"
-                @click="toggleExpanded(scope.$index)">
-            <i v-if="!scope.row._expanded"
-               class="el-icon-plus" />
-            <i v-else
-               class="el-icon-minus" />
-          </span>
-          <!-- 多选 -->
-          <el-checkbox-group v-if="Array.isArray(scope.row[col.name])"
-                             v-model="scope.row.selectchecked"
-                             @change="handleCheckedCitiesChange(scope.$index, scope.row, scope.row[col.option])">
-            <el-checkbox v-for="(interset) in scope.row[col.name]"
-                         :label="interset.id"
-                         :key="interset.id">
-              {{interset.text}}
-            </el-checkbox>
-          </el-checkbox-group>
-
-          <el-checkbox v-else-if="scope.row.type === 1"
-                       v-model="scope.row.checkAll"
-                       :indeterminate="scope.row.isIndeterminate"
-                       @change="handleCheckAllChange(scope.$index, scope.row, scope.row[col.option])">
-            <span v-if="index === 0">
-              <i :class="`icon icon-${scope.row.icon}`"
-                 style="color: #29d;" />
+          <div v-if="index === 0">
+            <span v-if="index === 0"
+                  v-for="space in scope.row._level"
+                  :key="space"
+                  class="ms-tree-space" />
+            <span v-if="iconShow(index, scope.row)"
+                  class="tree-ctrl"
+                  @click="toggleExpanded(scope.$index)">
+              <i v-if="!scope.row._expanded"
+                 class="el-icon-plus" />
+              <i v-else
+                 class="el-icon-minus" />
             </span>
-            {{scope.row[col.name]}}
-          </el-checkbox>
-
-          <div v-else
+            <div style="display:inline-block;">
+              <el-checkbox :indeterminate="scope.row.isIndeterminate"
+                           v-model="scope.row.checkAll"
+                           @change="handleCheckAll(scope.$index, scope.row, col)">
+              </el-checkbox>
+              <span v-if="index === 0">
+                <i :class="`icon icon-${scope.row.icon}`"
+                   style="color: #29d;" />
+              </span>
+              <span>{{scope.row[col.name]}}</span>
+            </div>
+          </div>
+          <div v-if="index > 0"
                style="display:inline-block;">
             <el-checkbox :indeterminate="scope.row.isIndeterminate"
-                         v-model="scope.row.checkAll"
-                         @change="handleCheckAllChange1(scope.$index, scope.row, col.option)">
-              {{ scope.row[col.act] }}
-            </el-checkbox>
-            <span v-if="index === 0">
-              <i :class="`icon icon-${scope.row.icon}`"
-                 style="color: #29d;" />
-            </span>
-            <span>{{scope.row[col.name]}}</span>
+                         v-model="scope.row[col.name]"
+                         :disabled="isDisabled(scope.row, col)"
+                         @change="checkAttr(scope.$index, scope.row, col)" />
           </div>
         </template>
       </el-table-column>
@@ -107,6 +92,9 @@ export default {
     this.defaultSelcet()
   }, */
   methods: {
+    isDisabled (row, col) {
+      return [2, 3].indexOf(row.cameraType) > -1 && col.name == 'ptz'
+    },
     showRow (row) {
       const show = (row.row.parent ? (row.row.parent._expanded && row.row.parent._show) : true)
       row.row._show = show
@@ -120,78 +108,6 @@ export default {
     // 图标显示
     iconShow (index, record) {
       return (index === 0 && record.children && record.children.length > 0)
-    },
-    handleCheckAllChange (index, row, opt) {
-      this.cc()
-      /* if (row.selectchecked.length && row.selectchecked.length !== opt.length) {
-        let arr = []
-        opt.forEach(element => {
-          arr.push(element.id)
-        })
-        row.selectchecked = arr
-        row.checkAll = true
-        row.isIndeterminate = false
-      } else if (!row.selectchecked.length) {
-        let arr = []
-        opt.forEach(element => arr.push(element.id))
-        row.selectchecked = arr
-        row.checkAll = true
-        row.isIndeterminate = false
-      } else {
-        row.selectchecked = []
-        row.checkAll = false
-        row.isIndeterminate = false
-      } */
-    },
-    handleCheckedCitiesChange (index, row, opt) {
-      row.checkAll = row.selectchecked.length === opt.length
-      row.isIndeterminate = row.selectchecked.length > 0 && row.selectchecked.length < opt.length
-      this.cc()
-    },
-    handleCheckAllChange1 (index, row, opt, arr = []) {
-      let me = this
-      debugger
-      // let arr = []
-      if (row.children) {
-        row.children.forEach(val => {
-          if (row.checkAll) {
-            /* val[opt].forEach(element => {
-              arr.push(element.id)
-            }) */
-            if (val.children) {
-              me.handleCheckAllChange1(null, val, null, arr)
-            } else {
-              val.selectchecked = [].concat(arr)
-              val.checkAll = true
-              val.isIndeterminate = false
-            }
-          } else {
-            val.selectchecked = []
-            val.checkAll = false
-            val.isIndeterminate = false
-          }
-        })
-      }
-      this.cc()
-    },
-    defaultSelcet () {
-      this.data.forEach(val => {
-        if (val.children) {
-          val.children.forEach(el => {
-            if (el.selectchecked.length && el.selectchecked.length !== el[this.columns[0].option].length) {
-              el.isIndeterminate = true
-              el.checkAll = false
-            } else if (el.selectchecked.length && el.selectchecked.length === el[this.columns[0].option].length) {
-              el.isIndeterminate = false
-              el.checkAll = true
-            } else {
-              el.isIndeterminate = false
-              el.checkAll = false
-            }
-          })
-          this.cc()
-        }
-      })
     },
     cc () {
       this.data.forEach(val => {
@@ -233,6 +149,45 @@ export default {
     },
     getAuth () {
       this.$emit('getAuth', this.data)
+    },
+    checkAttr () {
+
+    },
+    setAttr (obj, val) {
+      this.columns.slice(1).forEach(col => {
+        if (!this.isDisabled(obj, col)) {
+          obj[col.name] = val
+        }
+      })
+    },
+    handleCheckAll (index, row, col) {
+      var me = this
+      let setChild = function (list, val, arr = []) {
+        list.forEach(item => {
+          if (val) {
+            if (item.children && item.children.length > 0) {
+              item.children.forEach(el => arr.push(el.id))
+            }
+            item.selectchecked = arr
+          } else {
+            item.selectchecked = []
+          }
+          item.checkAll = val
+          item.isIndeterminate = false
+          me.setAttr(item, val)
+          if (item.children && item.children.length > 0) {
+            setChild(item.children, val, arr)
+          }
+        })
+      }
+      me.setAttr(row, row.checkAll)
+      if (row.children) {
+        setChild(row.children || [], row.checkAll)
+      } else {
+        row.checkAll = row.checkAll
+        row.isIndeterminate = false
+        row[col.name] = false
+      }
     }
   }
 }

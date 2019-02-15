@@ -24,10 +24,10 @@ export default {
     return {
       columns: [
         {
-          text: '菜单列表',
+          text: '列表',
           name: 'text',
           width: 200,
-          option: 'child'
+          option: 'children'
         },
         /* {
           text: '功能权限',

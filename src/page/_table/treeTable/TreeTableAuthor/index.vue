@@ -140,6 +140,7 @@ export default {
       return (index === 0 && record.children && record.children.length > 0)
     },
     handleCheckAllChange (index, row, opt) {
+      debugger
       this.cc()
 
       if (row.selectchecked.length && row.selectchecked.length !== opt.length) {
@@ -163,6 +164,7 @@ export default {
       }
     },
     handleCheckedCitiesChange (index, row, opt) {
+      debugger
       row.checkAll = row.selectchecked.length === opt.length
       row.isIndeterminate = row.selectchecked.length > 0 && row.selectchecked.length < opt.length
       this.cc()
