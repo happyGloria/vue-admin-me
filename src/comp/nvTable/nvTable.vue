@@ -81,7 +81,6 @@ let defaults = {
   expandAble: false
 }
 export default {
-  name: 'nv-table',
   props: {
     setting: Object
   },

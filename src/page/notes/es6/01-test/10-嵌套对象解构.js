@@ -33,3 +33,23 @@ console.log('rangeEnd:', rangeEnd) // rangeEnd: 3
 
 let [a, b, c, d] = "倚天屠龙";
 console.log(a, b, c, d); // 倚 天 屠 龙
+
+let obj = {
+  a: [1, 2]
+}
+
+let {
+  a: [x, y]
+} = obj
+
+console.log('x-y:', x-y)
+
+let obj1 = [
+  { a: 555}
+]
+
+let [
+  { a }
+] = obj1
+console.log(a)
+

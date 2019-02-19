@@ -1,53 +1,46 @@
 <template>
   <div class="login-container">
     <div id="canvas-bg"></div>
-    <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      autocomplete="on"
-      label-position="left"
-    >
+    <el-form ref="loginForm"
+             :model="loginForm"
+             :rules="loginRules"
+             class="login-form"
+             autocomplete="on"
+             label-position="left">
       <div class="title-container">
         <h3 class="title">{{$t('login.title')}}</h3>
-        <lang-select class="set-language"/>
+        <lang-select class="set-language" />
       </div>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
-          <span class="icon icon-user"/>
+          <span class="icon icon-user" />
         </span>
-        <el-input
-          v-model="loginForm.username"
-          name="username"
-          type="text"
-          autocomplete="on"
-          placeholder="username"
-        />
+        <el-input v-model="loginForm.username"
+                  name="username"
+                  type="text"
+                  autocomplete="on"
+                  placeholder="username" />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
-          <span class="icon icon-password"/>
+          <span class="icon icon-password" />
         </span>
-        <el-input
-          v-model="loginForm.password"
-          :type="passwordType"
-          name="password"
-          autocomplete="on"
-          placeholder="password"
-          @keyup.enter.native="handleLogin"
-        />
-        <span class="show-pwd" @click="showPwd">
+        <el-input v-model="loginForm.password"
+                  :type="passwordType"
+                  name="password"
+                  autocomplete="on"
+                  placeholder="password"
+                  @keyup.enter.native="handleLogin" />
+        <span class="show-pwd"
+              @click="showPwd">
           <span class="icon icon-eye"></span>
         </span>
       </el-form-item>
 
-      <el-button
-        type="primary"
-        style="width:100%;margin-bottom:30px;"
-        :loading="loading"
-        @click.native.prevent="handleLogin"
-      >{{$t('login.logIn')}}</el-button>
+      <el-button type="primary"
+                 style="width:100%;margin-bottom:30px;"
+                 :loading="loading"
+                 @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
 
       <div class="tips">
         <span>{{$t('login.username')}} : admin</span>
@@ -58,11 +51,9 @@
         <span>{{$t('login.password')}} : {{$t('login.any')}}</span>
       </div>
 
-      <el-button
-        class="thirdparty-button"
-        type="primary"
-        @click="showDialog=true"
-      >{{$t('login.thirdparty')}}</el-button>
+      <el-button class="thirdparty-button"
+                 type="primary"
+                 @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>
     </el-form>
 
     <!-- 星空背景 -->
@@ -87,7 +78,6 @@ import rainbow from './EffectBg/rainbow.js'
 
 export default {
   components: { LangSelect, SocialSign },
-  name: 'login',
   data () {
     const validateUsername = (rule, value, callback) => {
       if (!isvalidUsername(value)) {

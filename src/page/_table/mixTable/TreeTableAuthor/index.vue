@@ -57,7 +57,6 @@
 */
 import treeToArray from './eval'
 export default {
-  name: 'treeTable',
   props: {
     data: {
       type: [Array, Object],
@@ -150,8 +149,9 @@ export default {
     getAuth () {
       this.$emit('getAuth', this.data)
     },
-    checkAttr () {
-
+    checkAttr ($index, row, col) {
+      console.log($index, row, col)
+      console.log('data: ', this.data)
     },
     setAttr (obj, val) {
       this.columns.slice(1).forEach(col => {

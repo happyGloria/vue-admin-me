@@ -90,7 +90,6 @@
 */
 import treeToArray from './eval'
 export default {
-  name: 'treeTable',
   props: {
     data: {
       type: [Array, Object],

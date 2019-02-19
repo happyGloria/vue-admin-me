@@ -13,7 +13,6 @@
 import { Navbar, Sidebar, AppMain, TagsView } from './components'
 
 export default {
-  name: 'layout',
   components: {
     Navbar,
     Sidebar,

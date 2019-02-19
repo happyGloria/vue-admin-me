@@ -18,7 +18,6 @@
 import treeTable from './TreeTableAuthor'
 import { arr as treeData } from './data.js'
 export default {
-  name: 'treeTableDemo',
   components: { treeTable },
   data () {
     return {

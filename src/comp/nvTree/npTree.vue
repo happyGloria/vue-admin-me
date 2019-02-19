@@ -26,7 +26,6 @@
 </template>
 <script>
 export default {
-  name: 'nv-tree',
   props: {
     clz: { type: String, default: '' },
     curNodeKey: { type: Array, default: [] }, // 当前选中节点
