@@ -78,7 +78,8 @@ import rainbow from './EffectBg/rainbow.js'
 
 export default {
   components: { LangSelect, SocialSign },
-  data () {
+  data () { 
+s
     const validateUsername = (rule, value, callback) => {
       if (!isvalidUsername(value)) {
         callback(new Error('Please enter the correct user name'))
