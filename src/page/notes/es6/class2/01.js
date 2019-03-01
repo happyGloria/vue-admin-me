@@ -1,9 +1,9 @@
 class Point {
-  constructor(x, y) { // 构造方法
+  constructor (x, y) { // 构造方法
     this.x = x // this表示实例对象
     this.y = y
   }
-  tostring() {
+  tostring () {
     return `(${this.x}, ${this.y})`
   }
 }

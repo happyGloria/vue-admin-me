@@ -9,13 +9,13 @@
  */
 
 class A {
-  constructor() {
+  constructor () {
     console.log('正在执行的函数：', new.target.name) // new.target指向当前正在执行的函数
     // super执行时，它指向的是B的构造函数，而不是父类A的构造函数；
   }
 }
 class B extends A {
-  constructor() {
+  constructor () {
     super()
     this.color = '123'
     // super虽然代表父类A的构造函数，但是返回的是子类B的实例
@@ -28,7 +28,7 @@ class B extends A {
 console.log(b) */
 
 class C {
-  p() {
+  p () {
     this.color = 'green'
     return 2
   }
@@ -37,7 +37,7 @@ class C {
 C.prototype.x = 'gloria'
 
 class D extends C {
-  constructor() {
+  constructor () {
     super()
     console.log(super.p()) // super.p() 相当于将super当成一个对象使用, super在普通方法中，指向A.prototype 所以 super.p() == A.prototype.p()
     console.log(super.color) // 注意：由于super指向**父类的原型对象**， 所以定义在 **父类实例** 上的方法或属性， 是无法通过super调用的。

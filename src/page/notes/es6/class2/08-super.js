@@ -1,14 +1,14 @@
 class A {
-  constructor() {
+  constructor () {
     this.x = 1
   }
-  print() {
+  print () {
     console.log(this.x)
   }
 }
 
 class B extends A {
-  constructor() {
+  constructor () {
     super()
     this.x = 2
     super.x = 3
@@ -20,7 +20,7 @@ class B extends A {
      * 3. 当读取时，super.x == A.prototype.x 返回undefined
      */
   }
-  m() {
+  m () {
     super.print() // 2
   }
 }

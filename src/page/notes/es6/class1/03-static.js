@@ -3,13 +3,13 @@
  * 2. 静态方法可以与非静态方法重名
  */
 class Foo {
-  static bar() {
+  static bar () {
     this.baz()
   }
-  static baz() {
+  static baz () {
     console.log('hello')
   }
-  baz() {
+  baz () {
     console.log('world')
   }
 }

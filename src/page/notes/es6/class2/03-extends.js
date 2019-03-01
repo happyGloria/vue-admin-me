@@ -6,23 +6,23 @@
  */
 
 class Point {
-  constructor(x, y) {
-     this.x = x
-     this.y = y
+  constructor (x, y) {
+    this.x = x
+    this.y = y
   }
 }
 
 class ColorPoint extends Point {
-  constructor(x, y, color) {
+  constructor (x, y, color) {
     this.color = color // 报错, ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
-    super(x, y) // 表示调用父类的constructor(x, y) 
-                // 不调用super,子类得不到this。只有调用了this关键字后，才能使用this关键字
-                // 因为子类实例的构建，基于父类实例，只有super方法才能调用父类实例。
+    super(x, y) // 表示调用父类的constructor(x, y)
+    // 不调用super,子类得不到this。只有调用了this关键字后，才能使用this关键字
+    // 因为子类实例的构建，基于父类实例，只有super方法才能调用父类实例。
     this.color = color
   }
 
-  toString() {
-    return this.color + '' + super.toString()  // 调用父类的toString()
+  toString () {
+    return this.color + '' + super.toString() // 调用父类的toString()
   }
 }
 
@@ -34,7 +34,7 @@ class ColorPoint2 extends Point {
 }
 // 等价于
 class ColorPoint2 extends Point {
-  constructor(...args) {
+  constructor (...args) {
     super(...args)
   }
 }

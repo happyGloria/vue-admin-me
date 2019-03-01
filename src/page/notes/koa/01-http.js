@@ -6,7 +6,7 @@ app.use(async ctx => {
 app.listen(3000)
 
 /**
- * Context对象 
+ * Context对象
  * ctx.response/ctx.request
  * ctx.body 是 ctx.response.body的简写
  * */

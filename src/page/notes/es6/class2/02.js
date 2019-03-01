@@ -18,7 +18,7 @@ class Point {
 }
 // 等同于
 class Point {
-  constructor() {
+  constructor () {
     return Object.create(null)
   }
 }

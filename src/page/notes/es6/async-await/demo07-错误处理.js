@@ -13,4 +13,5 @@ async function test() {
 }
 
 test()
-// 如果await操作成功，就会使用break语句退出循环；如果失败，会被catch语句捕捉，然后进入下一轮循环。
+// 如果await操作成功，就会使用break语句退出循环；
+// 如果失败，会被catch语句捕捉，然后进入下一轮循环。

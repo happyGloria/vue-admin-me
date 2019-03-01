@@ -1,4 +1,4 @@
-aync function chainAnimationsPromise(ele, animations) {
+async function chainAnimationsPromise (ele, animations) {
   let ret = null
   try {
     for (let anim of animations) {

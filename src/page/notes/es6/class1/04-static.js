@@ -4,13 +4,13 @@
  * */
 
 class Foo {
-  static say() {
+  static say () {
     return 'hello world'
   }
 }
 
 class Bar extends Foo {
-  static go() {
+  static go () {
     return super.say() + ', too'
   }
 }

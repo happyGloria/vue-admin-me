@@ -1,4 +1,3 @@
-/**  */
 
 function Person(name) {
   if (new.target !== undefined) {
