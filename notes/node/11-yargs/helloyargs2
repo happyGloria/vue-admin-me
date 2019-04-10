@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var argv = require('yargs')
+    .demand(['n'])
+    .default({n: 'zhaodan'})
+    .describe({n: 'your name'})
+    .argv
+
+console.log('hello: ', argv.n)

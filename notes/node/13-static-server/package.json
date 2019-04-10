@@ -1,0 +1,22 @@
+{
+  "name": "zz-static-server",
+  "version": "1.0.0",
+  "description": "静态文件服务器",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["node", "http"],
+  "author": "happyGloria",
+  "license": "ISC",
+  "bin": {
+    "server": "bin/server"
+  },
+  "dependencies": {
+    "yargs": "^11.0.0",
+    "chalk": "^2.3.0",
+    "debug": "^3.1.0",
+    "handlebars": "^4.0.11",
+    "mime": "^2.2.0"
+  }
+}

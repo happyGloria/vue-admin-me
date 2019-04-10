@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var argv = require('yargs')
+    .alias('n', 'name')
+    .argv;
+//console.log('hello - name ' + argv.name)
+console.log('hello -n ' + argv.n)
+
+console.log('argv._', argv._)
+

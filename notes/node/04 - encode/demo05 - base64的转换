@@ -1,0 +1,15 @@
+const CHARTS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+function trans(str) {
+	let buf = Buffer.from(str);
+	let ary = [];
+	for (let b of buf) {
+		ary.push(b.toString(2));
+	}
+
+	return ary.join('').match(/(\d{6})/g).map(item => parseInt(item, 2)).map(index => CHARTS[index]).join('');
+
+	// 16 -> 2 -> 组成每6位的二进制数数组 -> 10 -> 取charts内容
+}
+
+let r = trans('珠');//54+g
+console.log(r);

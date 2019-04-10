@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+var argv = require('yargs')
+    .command('world', 'good world', function (yargs) {
+        console.log('hello world');
+    })
+    .command('hi', 'hello hi', function (yargs) {
+        console.log('hello hi')
+    })
+    .argv

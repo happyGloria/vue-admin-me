@@ -1,0 +1,32 @@
+#! /usr/bin/env node
+let path = require('path')
+console.log('process.pwd()', process.pwd())
+console.log('resolve:', path.resolve(process.pwd(), '../src'))
+let argv = require('yargs')
+    .option('d', {
+        alias: 'dir',
+        demand: false,
+        defalut: path.resolve(process.pwd(), '../src'),
+        type: 'string',
+        describe: '静态文件根目录'
+    })
+    .option('o', {
+        alias: 'host',
+        demand: false,
+        default: '127.0.0.1',
+        type: 'string',
+        describe: '主机名'
+    })
+    .option('p', {
+        alias: 'port',
+        demand: false,
+        type: 'number',
+        default: '9028',
+        describe: '端口号'
+    })
+    .usage('server [option]')
+    .example('server -o 192.168.12.91 -p 9000 -d www', '在192.168.12.91主机的9000端口上监听客户端请求')
+    .help('h')
+    .alias('h', 'help')
+    .epilog('static server copyright 2018 by happyGloria')
+    .argv

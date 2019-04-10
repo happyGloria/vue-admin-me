@@ -1,0 +1,46 @@
+let net = require('net')
+let util = require('util')
+
+var clients = {}
+
+let server = net.createServer((socket) => {
+	socket.setEncoding('utf8')
+	
+	server.getConnections((err, count) => {
+		socket.write('在线人数是' + count + '位，请输入你的昵称\r\n')
+	})
+	
+	let username
+	socket.on('data', (data) => {
+		data = data.replace(/\r\n/, '')
+		if (username) {
+			broadcast(username, `${username}: ${data}`)
+		} else {
+			if (clients[data]) {
+				socket.write('您的昵称' + data + '被占用了，请您更换新的昵称\\r\\n')
+			} else {
+				username = data
+				clients[username] = socket
+				broadcast(username, `欢迎${username}加入`)
+			}
+		}
+	})
+	
+	socket.on('end', () => {
+		broadcast(username, `${username}离开聊天室`)
+		clients[username] && clients[username].destroy()
+		delete clients[username]
+	})
+})
+
+function broadcast (username, msg) {
+	for (let name in clients) {
+		if (name != username) {
+			clients[name].write(`${msg}\r\n`)
+		}
+	}
+}
+
+server.listen(8080, 'localhost', () => {
+	console.log(`tcp聊天室已启动，地址是${util.inspect(server.address())}`)
+})

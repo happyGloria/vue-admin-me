@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var argv = require('yargs')
+    .option('n', {
+        alias: 'name',
+        demand: true,
+        default: 'zz',
+        describe: 'your name',
+        type: 'string'
+    })
+    .usage('Usage hello [options]')
+    .example('hello -n zhangsan', 'say hello tp zhangsan')
+    .help('h')
+    .alias('h', 'help')
+    .epilog('copyright 2018')
+    .argv
+
+console.log('hello', argv.n)

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    用户名:
+    <input type="text" name="user" id="user">
+    密码:
+    <input type="password" name="password" id="pass">
+    <input type="button" value="提交" id="btn">
+</body>
+
+</html>
+<script>
+  $(document).ready(() => {
+    $('#btn').click(() => {
+      var user = $('#user').val();
+      var pass = $('#pass').val()
+      $.ajax({
+        url: `/login?user=${user}&pass=${pass}`,
+        type: 'GET',
+        success: (data) => {
+          console.log(data)
+          var json = data.parse(data);
+          if (json.ok) {
+            alert('登录成功')
+          } else {
+            alert('登录失败', json.msg)
+          }
+        },
+        error: () => {
+          alert('失败')
+        }
+      })
+    })
+  })
+</script>

@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+console.log('hello world');
+
+console.log('命令行参数原始写法，通过process.argv获取', process.argv)
