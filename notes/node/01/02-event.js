@@ -24,9 +24,7 @@ class Evente {
     return
   }
   emit (name, ...args) {
-    this.map[name].forEach(fn => {
-      fn(...args)
-    })
+    this.map[name].forEach(fn => fn(...args))
   }
 }
 

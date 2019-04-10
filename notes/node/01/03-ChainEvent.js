@@ -3,7 +3,6 @@ class ChainEvente {
   constructor () {
     this.map = {}
   }
-
   add (name, fn) {
     if (this.map[name]) {
       this.map[name].push(fn)
@@ -12,7 +11,6 @@ class ChainEvente {
     this.map[name] = [fn]
     return this
   }
-
   emit (name, ...args) {
     this.map[name].forEach(fn => fn(...args))
     return this
