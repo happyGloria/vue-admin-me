@@ -1,0 +1,102 @@
+<template>
+	<a class="np-check-box" @click.stop="checkFn()">
+		<span class="checkbox" :class="{ 'selected': selected }">{{text}}</span>
+	</a>
+</template>
+<script>
+/**
+ * props: {
+ * 	name: 'userName',	//此控件对应的标识
+ * 	isSelected: true,	//初始化选中状态[Boolean]
+ * 	text: '张三'			//显示选中项
+ * }
+ * events: {
+ * 	check: () => {name, isSelected}		//返回标识及是否选中
+ * }
+ */
+	export default {
+		props: {
+			name: { type: null, default: '' },
+			isSelected: { type: Boolean, default: false },
+			text: { type: String, default: '' }
+		},
+		data: function () {
+			return {
+				selected: this.isSelected
+			};
+		},
+		methods: {
+			checkFn: function () {
+				this.selected = !this.selected;
+				this.$emit('check', this.name, this.selected);
+			}
+		},
+		watch: {
+			isSelected: function (newValue) {
+				this.selected = newValue;
+			}
+		}
+	};
+</script>
+<style lang="less">
+	.np-check-box{
+		&, &>*{
+			display: inline-block;
+		}
+		.checkbox{
+			position: relative;
+			padding-left: 25px;
+			cursor: pointer;
+			display: inline-block;
+			height: 20px;
+			line-height: 18px;
+			font-size: 1rem;
+			&:before{
+				left: 0;
+				width: 0;
+				height: 0;
+				border-radius: 1px;
+				margin-top: 2px;
+				border: 3px solid transparent;
+				left: 6px;
+				top: 10px;
+				transform: rotateZ(37deg);
+				transform-origin: 100% 100%;
+			}
+			&:after{
+				height: 16px;
+				width: 16px;
+				background-color: rgba(0, 0, 0, 0.3);
+				top: 0px;
+				left: 0;
+				border-radius: 2px;
+			}
+			&:before, &:after{
+				z-index: 1;
+				content: '';
+				position: absolute;
+				transition: border .25s, background-color .25s, width .2s .1s, height .2s .1s, top .2s .1s, left .2s .1s;
+				box-sizing: inherit;
+			}
+			&.selected:before{
+				top: -2px;
+				left: 0;
+				width: 8px;
+				height: 13px;
+				border-top: 2px solid transparent;
+				border-left: 2px solid transparent;
+				border-right: 2px solid #fff;
+				border-bottom: 2px solid #fff;
+				transform: rotateZ(37deg);
+				transform-origin: 100% 100%;
+			}
+			&.selected:after{
+				top: 0px;
+				width: 16px;
+				height: 16px;
+				background-color: #12f2fa;
+				z-index: 0;
+			}
+		}
+	}
+</style>
