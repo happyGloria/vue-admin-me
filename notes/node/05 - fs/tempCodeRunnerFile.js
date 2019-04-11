@@ -1,13 +1,15 @@
-let fs = require('fs')
-function mkdirSync(p) {
-  let dirs = p.split('/'); // [m,q,d]
-  for(let i = 0 ; i<dirs.length;i++){
-    let currentPath = __dirname + '/' + dirs.slice(0,i+1).join('/');
-    try{
-      fs.accessSync(currentPath);
-    }catch(e){
-      fs.mkdirSync(currentPath);
-    }
+let fs = require('fs'),
+  dir = __dirname + '/log/test.txt'
+
+fs.watchFile(dir, { interval: 20 }, (cur, prev) => {
+  if (Date.parse(prev.ctime) == 0) {
+    console.log('文件被创建');
+  } else if (Date.parse(cur.ctime) == 0) {
+    console.log('文件被删除');
+  } else if (Date.parse(prev.time) != Date.parse(cur.time)) {
+    console.log('文件被修改');
   }
-}
-mkdirSync('m/q/d');
+})
+setTimeout(() => {
+  fs.unlink(dir, (err) => console.log(err))
+}, 30)

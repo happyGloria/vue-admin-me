@@ -1,14 +1,13 @@
 const fs = require('fs');
-var fileReadStream = fs.createReadStream('logs/hello.log');
+var readStream = fs.createReadStream(__dirname + '/log/hello.log');
 
-let count = 0;
-var str = '';
-fileReadStream.on('data', (chunk) => {
+let count = 0, str = '';
+readStream.on('data', (chunk) => {
   console.log(`${++count} 接收到 ${chunk.length}`);
   str += chunk;
 })
 
-fileReadStream.on('end', () => {
+readStream.on('end', () => {
   console.log('---结束----');
   console.log(count);
   console.log(str);

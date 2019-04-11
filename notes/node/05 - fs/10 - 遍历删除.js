@@ -1,23 +1,21 @@
 let fs = require('fs');
 let path = require('path')
-
-
 // 同步删除
 function rmdirpSync(target) {
 	let files = fs.readdirSync(target);
-	files.forEach((item) => {
-		let childs = path.join(target, item);
+	files.forEach((file) => {
+		let childs = path.join(target, file);
 		console.log(childs);
 		if(fs.statSync(childs).isDirectory()) {
-			rmdirp(childs)
+			rmdirpSync(childs)
 		}
 	})
 	fs.rmdirSync(target);
 }
-rmdirpSync('1');
+rmdirpSync(__dirname + '/1');
 
 
-/*
+
 var path = require('path');
 function wide(dirs) {
 	let current = dirs[index];
@@ -40,4 +38,4 @@ function wide(dirs) {
 			next();
 		}
 	})
-}*/
+}
