@@ -1,8 +1,7 @@
-const http = require('http');
-const url = require('url');
-const fs = require('fs');
+const http = require('http'),
+  fs = require('fs');
 var server = http.createServer((req, res) => {
-  console.log(req.url);   //客户端访问地址
+  console.log(req.url); //客户端访问地址
   var filename = './www' + req.url;
   fs.readFile(filename, (err, data) => {
     if (err) {

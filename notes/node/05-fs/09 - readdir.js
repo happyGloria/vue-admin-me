@@ -38,3 +38,4 @@ fs.readdir(`${__dirname}/log`, (err, files) => {
     })
   }
 })
+

@@ -41,9 +41,7 @@ function copy (paths) {
 		}
 	}, 500)
 	
-	readStream.on('end', () => {
-		writeStream.end()
-	})
+	readStream.on('end', () => writeStream.end())
 }
 
 copy({

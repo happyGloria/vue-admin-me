@@ -24,21 +24,21 @@ let fs = require('fs')
 fs.exists(__dirname + '/logs', (exists) => console.log(exists ? '存在' : '不存在'))
 
 let fs = require('fs'),
-  dir = __dirname + '/log/test.js'
-fs.utimes(dir, new Date(), new Date(), err => {
+  file = __dirname + '/log/test.js'
+fs.utimes(file, new Date(), new Date(), err => {
   if (err) {
     throw err;
   } else {
-    fs.stat(dir, (err, stat) => {
+    fs.stat(file, (err, stat) => {
       console.log('访问时间：', stat.atime.toString(), '\n 修改时间：', stat.mtime)
     })
   }
 })
 
 let fs = require('fs'),
-  dir = __dirname + '/log/test.txt'
+  file = __dirname + '/log/test.txt'
 
-fs.watchFile(dir, { interval: 20 }, (cur, prev) => {
+fs.watchFile(file, { interval: 20 }, (cur, prev) => {
   if (Date.parse(prev.ctime) == 0) {
     console.log('文件被创建');
   } else if (Date.parse(cur.ctime) == 0) {
@@ -48,5 +48,18 @@ fs.watchFile(dir, { interval: 20 }, (cur, prev) => {
   }
 })
 setTimeout(() => {
-  fs.unlink(dir, (err) => console.log(err))
+  fs.unlink(file, (err) => console.log(err))
 }, 30)
+
+fs.unwatchFile(file, prev => console.log('取消监视'))
+
+let fs = require('fs'),
+  dir = __dirname + '/log'
+let fsWatcher = fs.watch(dir, (event, filename) => {
+
+})
+fsWatcher.on('change', (event, filename) => console.log(filename + '发生变化'))
+
+setTimeout(() => {
+  fsWatcher.close(() => console.log(err || '关闭watch'))
+})

@@ -1,7 +1,6 @@
-const http = require('http');
-const url = require('url');
-const qs = require('querystring');
-const fs = require('fs');
+const http = require('http'),
+  url = require('url'),
+  fs = require('fs');
 
 var users = {};
 
@@ -12,7 +11,10 @@ var server = http.createServer((req, res) => {
   });
 
   req.on('end', () => {
-    var { pathname, query } = url.parse(req.url, true);
+    var {
+      pathname,
+      query
+    } = url.parse(req.url, true);
     if (pathname == '/user') {
       switch (query.action) {
         case 'reg':
@@ -21,7 +23,7 @@ var server = http.createServer((req, res) => {
               ok: false,
               msg: '此用户已存在'
             }));
-          } else {  
+          } else {
             users[query.user] = query.pass;
             res.write(JSON.stringify({
               ok: true,
@@ -56,9 +58,9 @@ var server = http.createServer((req, res) => {
     } else {
       var filename = './www' + pathname;
       fs.readFile(filename, (err, data) => {
-        if(err){
+        if (err) {
           res.write('404');
-        }else{
+        } else {
           res.write(data);
         }
         res.end();

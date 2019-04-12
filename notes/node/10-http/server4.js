@@ -1,10 +1,13 @@
-const http = require('http');
-const fs = require('fs');
-const qs = require('querystring');
-const url = require('url');
+const http = require('http'),
+  fs = require('fs'),
+  qs = require('querystring'),
+  url = require('url');
 var server = http.createServer((req, res) => {
   var data = '';
-  var { pathname, query } = url.parse(req.url, true);
+  var {
+    pathname,
+    query
+  } = url.parse(req.url, true);
   req.on('data', (chunk) => {
     data += chunk;
   });

@@ -1,7 +1,7 @@
 var http = require('http');
 
 // 创建http服务器， 并监听8888端口
-http.createServer(function(req, res) {
+http.createServer((req, res) => {
   console.log('服务器接收到了请求' + req.url);
   // 设置响应头，回写响应代码
   res.writeHead(200, {

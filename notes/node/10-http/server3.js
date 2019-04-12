@@ -1,5 +1,5 @@
-var http = require('http');
-var qs = require('querystring');
+var http = require('http'),
+  qs = require('querystring');
 http.createServer((req, res) => {
   var data = '';
   var idx = 0;
@@ -7,7 +7,7 @@ http.createServer((req, res) => {
     console.log(`第${idx}次收到数据`);
     data += chunk;
   });
-  req.on('end', () => {   //数据全部到达,
+  req.on('end', () => { //数据全部到达,
     var post = qs.parse(data);
     console.log(post);
   });

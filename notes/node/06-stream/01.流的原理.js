@@ -6,20 +6,17 @@ function copy(source, target,callback) {
     fs.open(target, 'w', function (err, wfd) {
       let buffer = Buffer.alloc(BUFFER_SIZE);
       // bytesRead真实读到的字节个数
-      function next() {
-        fs.read(rfd, buffer, 0, BUFFER_SIZE, null, function (err, bytesRead) {
-          if (bytesRead>0){
-            fs.write(wfd, buffer, 0, bytesRead, null, function (err, writen) {
-              next();
-            });
+      ! function next() {
+        fs.read(rfd, buffer, 0, BUFFER_SIZE, null, (err, bytesRead) => {
+          if (bytesRead > 0){
+            fs.write(wfd, buffer, 0, bytesRead, null, (err, writen) => next());
           }else{
-            fs.close(rfd,()=>{});
+            fs.close(rfd,() => {});
             fs.close(wfd, () => {});
             callback();
           }
         });
-      }
-      next();
+      }()
     });
   });
 }
