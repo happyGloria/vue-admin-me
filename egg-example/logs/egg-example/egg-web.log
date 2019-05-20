@@ -1,0 +1,14 @@
+2019-04-19 17:07:28,292 INFO 20904 [egg:logger] init all loggers with options: {"dir":"F:\\03-node\\vue-admin-me\\egg-example\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2019-04-19 17:07:28,337 INFO 20904 [egg-multipart] stream mode enable
+2019-04-19 17:07:28,434 INFO 20904 [egg-static] starting static serve /public/ -> F:\03-node\vue-admin-me\egg-example\app\public
+2019-04-19 17:07:28,437 INFO 20904 [egg-security] use csrf middleware
+2019-04-19 17:07:28,439 INFO 20904 [egg-security] use methodnoallow middleware
+2019-04-19 17:07:28,439 INFO 20904 [egg-security] use noopen middleware
+2019-04-19 17:07:28,441 INFO 20904 [egg-security] use nosniff middleware
+2019-04-19 17:07:28,442 INFO 20904 [egg-security] use xssProtection middleware
+2019-04-19 17:07:28,443 INFO 20904 [egg-security] use xframe middleware
+2019-04-19 17:07:28,443 INFO 20904 [egg-security] use dta middleware
+2019-04-19 17:07:28,443 INFO 20904 [egg-security] compose 7 middlewares into one security middleware
+2019-04-19 17:07:28,458 INFO 20904 [egg:core] dump config after load, 9ms
+2019-04-19 17:07:28,472 INFO 20904 [egg-watcher:application] watcher start success
+2019-04-19 17:07:28,477 INFO 20904 [egg:core] dump config after ready, 4ms

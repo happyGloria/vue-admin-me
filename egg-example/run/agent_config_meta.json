@@ -1,0 +1,257 @@
+{
+  "keys": "F:\\03-node\\vue-admin-me\\egg-example\\config\\config.default.js",
+  "session": {
+    "maxAge": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-multipart\\config\\config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-development\\config\\config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "view": {
+    "root": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "env": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "name": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "version": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "description": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "main": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "test": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "dev": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    },
+    "author": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "license": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "egg": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "strict": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "depth": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "env": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "level": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "logging": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "port": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "F:\\03-node\\vue-admin-me\\egg-example\\node_modules\\egg\\config\\config.default.js"
+}
